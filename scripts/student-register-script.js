@@ -37,12 +37,6 @@ inputFile.addEventListener("change", function (e) {
 });
 
 
-function fetchImage(filename) {
-    const downloadUrl = `http://localhost:8080/file/download/${filename}`; // Substitua pelo URL correto
-    return fetch(downloadUrl)
-      .then((response) => response.blob())
-      .then((blob) => URL.createObjectURL(blob));
-};
 function fetchImgPost(formData){
     
     fetch(uploadUrl, {
@@ -90,8 +84,6 @@ form.addEventListener('submit',evento=>{
     fetchPost(data)
   
 })
-
-
 
 function getAllProjectName() {
   return fetch('http://localhost:8080/projects', {
