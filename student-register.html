@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zup Progress</title>
+    <link rel="stylesheet" href="/assets/css/student-register-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="menu">
+        <nav class="menu-lateral">
+            <ul>
+                <li class="item-menu">
+                    <a href="#">
+                        <span class="icon">
+                            <img src="../assets/images/Vector.png" alt="">
+                        </span>
+                    </a>
+                </li>
+                <li class="item-menu">
+                    <a href="#">
+                        <span class="icon">
+                            <img src="../assets/images/Person.png" alt="">
+                        </span>
+                    </a>
+                </li>
+                <li class="item-menu">
+                    <a href="feedback-student.html">
+                        <span class="icon">
+                            <img src="../assets/images/rocket (1) 1.png" alt="">
+                        </span>
+                    </a>
+                </li>
+                <li class="item-menu">
+                    <a href="feedback-student.html">
+                        <span class="icon">
+                            <img src="../assets/images/education (1) 1.png" alt="">
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="main">
+        <h1>Cadastrar Aluno</h1>
+        <div id="img-container">
+            <div id="imagem-perfil">
+                <label class="picture" for="picture__input" tabIndex="0">
+                    <span class="picture__image"></span>
+                  </label>
+                  
+                  <input type="file" name="picture__input" id="picture__input">
+            </div>
+        </div>
+        <div id="form-container">
+            <div id="form-inner">
+                <form id="register-form">
+                    
+                    <div id="container">
+                        <div>
+                            <label for="name">Nome</label>
+                            <input type="text" name="name" id="name" placeholder="Nome" />
+                        </div>
+                        <div>
+                            <label>Idade</label>
+                            <input
+                                type="number"
+                                name="age"
+                                id="age"
+                                placeholder="Idade"
+                            />
+                        </div>
+                        <div>
+                            <label>Término Contrato</label>
+                            <input
+                                type="date"
+                                name="contract_end"
+                                id="contract_end"
+                                placeholder="Término Contrato"
+                            />
+                        </div>
+                    </div>
+                    <div id="container">
+                        <div>
+                            <label>Cidade</label>
+                            <input type="text" name="city" id="city" placeholder="Cidade" />
+                        </div>
+                        <div>
+                            <label>Email</label>
+                            <input
+                                type="email"
+                                name="email"
+                                id="email"
+                                placeholder="Email"
+                            />
+                        </div>
+                        <div class="select">
+                            <span>Projeto</span>
+                            <select name="project" id="project">
+                               <option selected disabled>Escolha um projeto</option>
+                               
+                            </select>
+                         </div>
+                        </div>
+                    
+                    <div id="container">
+                        <div class="select">
+                            <span>Mentor</span>
+                            <select name="mentor" id="mentor">
+                               <option selected disabled>Escolha um mentor</option>
+                               
+                            </select>
+                         </div>
+                         <div class="select">
+                            <span>Pcd</span>
+                            <select name="pcd" id="pcd">
+                               <option selected disabled>É pcd</option>
+                               <option value="true">Sim</option>
+                               <option value="false">Não</option>
+                            </select>
+                         </div>
+                        <div id="disability">
+                            <label>Tipo de deficiência</label>
+                            <input
+                                type="text"
+                                name="typeOfDisability"
+                                id="typeOfDisability"
+                                placeholder="Tipo de deficiência"
+                            />
+                        </div>
+                    </div>
+                    <div id="container">
+                        <div id="biografia">
+                            <label>Biografia</label>
+                            <input
+                                type="text"
+                                name="bio"
+                                id="bio"
+                                placeholder="Bio"
+                            /></div>
+                    </div>
+                    <div>
+                        <input type="submit" value="Salvar" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="scripts/student-register-script.js"></script>
+</body>
+</html>
