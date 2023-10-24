@@ -82,6 +82,9 @@ form.addEventListener('submit',evento=>{
     
     fetchImgPost(formDataImg)
     fetchPost(data)
+    form.reset();
+    pictureImage.innerHTML = pictureImageTxt;
+    alert("Aluno cadastrado com sucesso!")
   
 })
 

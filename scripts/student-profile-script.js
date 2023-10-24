@@ -1,7 +1,7 @@
 // Função para recuperar e atualizar os valores do estudante
 var image = ""
 function updateStudentInfo() {
-    var name = "aparecida"; // Substitua pelo nome do estudante que você deseja buscar
+    var name = "Janaina"; // Substitua pelo nome do estudante que você deseja buscar
     fetch(`http://localhost:8080/students/${name}`) // Substitua pelo endpoint correto
         .then(response => response.json())
         .then(data => {
