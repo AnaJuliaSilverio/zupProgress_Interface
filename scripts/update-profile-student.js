@@ -7,24 +7,25 @@ const formDataImg = new FormData();
 var nomeFile =""
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Faça uma requisição GET para obter os dados desejados, por exemplo, usando o Fetch API.
     var name = "aparecida";
+    
     fetch(`http://localhost:8080/students/${name}`)
-        .then(response => response.json()) // Supondo que a resposta é um JSON.
+        .then(response => response.json())
         .then(data => {
             fetchImage(data.image);
+            populateProjectSelect();
+            populateMentorSelect();
             nomeFile = data.image;
-            // Preencha os campos de input com os valores obtidos.
             document.getElementById('name').value = data.name;
             document.getElementById('age').value = data.age;
             document.getElementById('contract_end').value = data.contract_end;
             document.getElementById('city').value = data.city;
             document.getElementById('email').value = data.email;
-            document.getElementById('project').value = data.project;
-            document.getElementById('mentor').value = data.mentor;
             document.getElementById('pcd').value = data.pcd;
             document.getElementById('typeOfDisability').value = data.typeOfDisability;
             document.getElementById('bio').value = data.bio;
+            document.getElementById("selected-mentor").textContent = data.mentor;
+            document.getElementById("selected-project").textContent = data.project;
         })
         .catch(error => console.error('Erro na requisição GET:', error));
 });
@@ -40,8 +41,6 @@ function fetchImage(filename) {
 inputFile.addEventListener("change", function (e) {
     const inputTarget = e.target;
     const file = inputTarget.files[0];
-    
-
     if (file) {
       nomeFile = file.name;
       console.log(nomeFile);
@@ -52,11 +51,15 @@ inputFile.addEventListener("change", function (e) {
         const readerTarget = e.target;
   
         const img = document.getElementById("image-profile");
+        const overlay = document.querySelector(".overlay"); 
         img.src = readerTarget.result;
         img.classList.add("image-profile");
-  
+        
         pictureImage.innerHTML = "";
+        
         pictureImage.appendChild(img);
+        pictureImage.append(overlay);
+      
       });
   
       reader.readAsDataURL(file);
@@ -130,3 +133,21 @@ function populateProjectSelect() {
             console.error('Erro ao buscar os nomes dos mentores:', error);
         });
   }
+
+
+function getAllProjectName() {
+  return fetch('http://localhost:8080/projects', {
+    headers: {
+        'Accept': 'application/json'
+    }
+})
+  .then(response => response.json());
+}
+function getAllMentorName() {
+  return fetch('http://localhost:8080/mentor', {
+    headers: {
+        'Accept': 'application/json'
+    }
+})
+  .then(response => response.json());
+}
