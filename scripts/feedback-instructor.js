@@ -1,3 +1,4 @@
+
 function getAllProjectName() {
     return fetch('http://localhost:8080/projects', {
       headers: {
@@ -31,24 +32,88 @@ function populateProjectSelect() {
             console.error('Erro ao buscar os nomes dos projetos:', error);
         });
 }
-document.addEventListener("DOMContentLoaded", function () {
-    // Populate the "Projeto" dropdown when the page loads
-    populateProjectSelect();
+function getAllAtributes() {
+    return fetch('http://localhost:8080/atributes', {
+      headers: {
+          'Accept': 'application/json'
+      }
+  })
+    .then(response => response.json());
+  }
+  function preencherFeedbackAtributes() {
+    const registerForm = document.getElementById('register-form');
+    getAllAtributes()
+      .then(data => {
+       
+       
+        if (data && data.length > 0) {
+            
 
-    // Get references to the select elements
+          data.forEach((atributo, index) => {
+            const checkboxDivMain = document.createElement('div');
+            checkboxDivMain.id = `checkbox`;
+            const feedbackContainer = document.createElement('div');
+            feedbackContainer.id = `feedback-container`;
+            const tituloDiv = document.createElement('div');
+            tituloDiv.id = `feedback-titulo`;
+            
+            tituloDiv.innerHTML = `<p>${atributo}</p>`;
+  
+            // Crie uma div para os checkboxes com id e label personalizados
+            const checkboxLabels = ['abaixo', 'dentro', 'acima'];
+            checkboxLabels.forEach(label => {
+              const input = document.createElement('input');
+              const labelElement = document.createElement('label');
+              const id = `${label}-esperado-${atributo}`;
+  
+              input.type = 'radio';
+              input.id = id;
+              input.name = `${atributo}`;
+              input.value = `${label}-esperado`;
+  
+              labelElement.htmlFor = id;
+              labelElement.textContent = `${label} do esperado`;
+  
+              const checkboxContent = document.createElement('div');
+              checkboxContent.id =  `checkbox-content`;
+              checkboxContent.appendChild(input);
+              checkboxContent.appendChild(labelElement);
+             checkboxDivMain.appendChild(checkboxContent);
+             feedbackContainer.appendChild(tituloDiv);
+            feedbackContainer.appendChild(checkboxDivMain);
+            registerForm.appendChild(feedbackContainer);
+            });
+
+           
+            
+            
+          });
+          const button = document.createElement('div');
+            const inputButton = document.createElement('input');
+            inputButton.type = 'submit';
+            inputButton.value = 'Salvar';
+            button.appendChild(inputButton);
+            registerForm.appendChild(button);
+
+        } else {
+          console.error('A lista de atributos está vazia ou não está definida.');
+        }
+      })
+      .catch(error => {
+        console.error('Erro ao obter os atributos:', error);
+      });
+      
+  }
+
+  
+document.addEventListener("DOMContentLoaded", function () {
+    populateProjectSelect();
+    preencherFeedbackAtributes();
     const projectSelect = document.getElementById('project');
     const nameSelect = document.getElementById('name');
-    
-    
-
-    // Add an event listener to the "Projeto" dropdown
     projectSelect.addEventListener('change', function () {
         const selectedProject = projectSelect.value;
-
-        // Clear the "Nome do aluno" dropdown
         nameSelect.innerHTML = '<option selected disabled>Escolha um aluno</option>';
-
-        // Fetch the students associated with the selected project
         if (selectedProject) {
             getStudentsName(selectedProject)
                 .then(studentNames => {
@@ -65,37 +130,56 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
     const feedbackForm = document.getElementById('register-form');
+    const form = document.querySelector('form');
+   
+    
     feedbackForm.addEventListener('submit', function (event) {
-        event.preventDefault(); // Evite que o formulário seja enviado normalmente
-
-        // Coletar os dados do formulário
+        event.preventDefault();
+        
         const selectedProject = projectSelect.value;
         const selectedName = nameSelect.value;
-        // Crie um objeto FeedbackDTO
-        const feedbackDTO = {
-            type: "INSTRUCTOR_EVALUATION",
-            atributes: "Racicinio estruturado",
-            status: "Acima do esperado",
-        };
-        const challengeName = "Desafio 1"
         
-        fetch(`http://localhost:8080/feedback/${challengeName}/${selectedName}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(feedbackDTO),
-        })
-        .then(response => {
-            if (response.ok) {
-                console.log('Feedback enviado com sucesso!');
-            } else {
-                console.error('Erro ao enviar feedback.');
-            }
-        })
-        .catch(error => {
-            console.error('Erro ao enviar feedback:', error);
-        });
-    });
+        
+        var dataForm = new FormData(form);
+        dataForm.delete('project');
+        dataForm.delete('name');
+        var feedbackList = [];
+        var formData = dataForm.entries(dataForm);
+        
+        for (const [key, value] of formData) {
+            var feedbackDTO = {
+                type: "INSTRUCTOR_EVALUATION",
+                atributes: key,
+                status: value
 
+            };
+            console.log(key);
+            console.log(value);
+            feedbackList.push(feedbackDTO);
+        }
+        console.log(feedbackList)
+        
+      
+        fetchPost(feedbackList,selectedName)
+       
+    });
+    
 });
+function fetchPost(formData,selectedName){
+    
+    fetch(`http://localhost:8080/feedback/Desafio/${selectedName}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json", // Defina o cabeçalho Content-Type para JSON
+      },
+      body: JSON.stringify(formData), 
+      })
+  
+        .then((data) => {
+          console.log(data)
+          console.log("Resposta do servidor:", data);
+        })
+        .catch((error) => {
+          console.error("Erro ao enviar a imagem:", error);
+        });
+  }
