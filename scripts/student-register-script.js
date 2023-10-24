@@ -10,8 +10,6 @@ var nomeFile =""
 inputFile.addEventListener("change", function (e) {
   const inputTarget = e.target;
   const file = inputTarget.files[0];
-  
-
   if (file) {
     nomeFile = file.name;
     console.log(nomeFile);
@@ -93,6 +91,7 @@ function getAllProjectName() {
 })
   .then(response => response.json());
 }
+
 function getAllMentorName() {
   return fetch('http://localhost:8080/mentor', {
     headers: {
