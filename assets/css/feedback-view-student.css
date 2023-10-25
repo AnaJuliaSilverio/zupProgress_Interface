@@ -1,0 +1,178 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat";
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-wrap: nowrap;
+    background-image: url("/assets/images/background-fun.jpg"); /* Substitua 'caminho-da-imagem.jpg' pelo caminho real da sua imagem de fundo */
+    background-repeat: no-repeat;
+    background-size: cover; /* Isso faz com que a imagem de fundo cubra todo o corpo */
+    background-attachment: fixed;
+}
+.menu{
+    height: 100%;
+    position: fixed;
+    
+}
+nav.menu-lateral {
+    height: 100%;
+    background-color: #003566;
+    width: 70px;
+}
+
+ul {
+    height: 100%;
+    list-style-type: none;
+}
+
+ul li.item-menu a {
+    text-decoration: none;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+ul li.item-menu a .icon > img {
+    margin-top: 0.7rem;
+    width: 35px;
+    transition: transform 0.3s;
+}
+
+ul li.item-menu a .icon > img:hover {
+    transform: scale(1.2);
+}
+.main{
+    flex: 1;
+    margin-left: 3rem;
+
+}
+.main h1{
+    text-align: center;
+    padding: 1.5rem;
+    color: #555;
+}
+.dropdown {
+    display: flex;
+    padding: 2rem;
+    margin-left: .5rem;
+}
+
+.dropbtn{
+    width: 150px;
+    height: 40px;
+    background-color: #fff;
+    color: black;
+    border-color:#008939;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#desafio{
+    margin-right: 0.5rem;
+}
+
+#desafio:hover .dropdown-content {
+    display: block;
+}
+  
+#desafio .dropdown-content {
+    display: none;
+    min-width: 160px;
+   
+}
+#tipo-feedback:hover .dropdown-content {
+    display: block;
+}
+  
+#tipo-feedback .dropdown-content {
+    display: none;
+    min-width: 160px;
+}
+  
+.dropdown-content a {
+    color: #000000;
+    border-radius: 5px;
+    width: 150px;
+    padding: 0.8rem;
+    text-decoration: none;
+    display: block;
+    
+    font-size: 0.8rem;
+  }
+  
+.dropdown-content a:hover {
+
+    background-color: #ddd;
+}
+
+.container {
+    flex: 1;
+    flex-wrap: wrap;
+    padding: 2rem;
+    display: flex;
+   
+}
+#esquerda{
+    flex: 50%;
+}
+
+#direita{
+    flex: 50%;
+}
+#conteudo{
+    margin-bottom: 2rem;
+    padding: .7rem;
+    width: 40rem;
+    border: 2px solid #00893940;
+    border-radius: 5px;
+    background: #ffffff;
+    margin-left: 2rem;
+   
+}
+.container h2{
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+}
+h2{
+    font-size: 0.5rem;
+    color: #022246e2;
+}
+h4{
+    color: #858585;
+    align-items: center;
+}
+.container h3{
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+.container p{
+    line-height:25px;
+    font-size: 1.1rem;
+    color: #616161;
+}
+.dropdown{
+    margin-left: 2rem;
+}
+select {
+    border: 2px solid #0089397d;
+    border-radius: 5px;
+    width:300px ;
+    padding: 0.63rem 0.4rem;
+    cursor:pointer;
+    font-size: 1em;
+    border-radius: .25em;
+ }
+ span{
+    text-align: initial;
+    display: block;
+    margin-bottom: .5rem;
+    color: #001D3D;
+ }
+ select::-ms-expand {
+    display: none;
+ }
