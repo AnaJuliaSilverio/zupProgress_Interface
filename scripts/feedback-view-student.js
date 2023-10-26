@@ -1,18 +1,22 @@
 var selectedValueAvaliacao
 var selectedValueDesafio
+var token = localStorage.getItem('jwtToken');
+var email = localStorage.getItem('email')
 function getAllChallengeName() {
     return fetch('http://localhost:8080/challenge', {
       headers: {
-          'Accept': 'application/json'
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ' + token
       }
   })
     .then(response => response.json());
 }
 
 function getAllFeedback(selectedValueDesafio,selectedValueAvaliacao) {
-    return fetch(`http://localhost:8080/feedback/${selectedValueDesafio}/${selectedValueAvaliacao}/Marcos`, {
+    return fetch(`http://localhost:8080/feedback/${selectedValueDesafio}/${selectedValueAvaliacao}/${email}`, {
       headers: {
-          'Accept': 'application/json'
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ' + token
       }
   })
     .then(response => response.json());
