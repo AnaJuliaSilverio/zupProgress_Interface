@@ -1,5 +1,5 @@
 // Função para recuperar e atualizar os valores do estudante
-
+var email;
 function updateStudentInfo() {
     var name = "aparecida"; // Substitua pelo nome do estudante que você deseja buscar
     fetch(`http://localhost:8080/students/${name}`) // Substitua pelo endpoint correto
@@ -8,6 +8,7 @@ function updateStudentInfo() {
             fetchImage(data.image);
             document.getElementById("name").textContent = data.name;
             document.getElementById("email").textContent = data.email;
+            email = data.email
             document.getElementById("mentor").textContent = data.mentor;
             document.getElementById("city").textContent = data.city;
             document.getElementById("age").textContent = data.age;
@@ -23,5 +24,12 @@ function fetchImage(filename) {
       .then((response) => response.blob())
       .then((blob) => URL.createObjectURL(blob));
 };
+const deleteButton = document.getElementById('delete');
+function deleteStudent(){
+    fetch(`http://localhost:8080/students/${email}`) // Substitua pelo endpoint correto
+        .then(response => response.json())
+        
+}
+document.addEventListener(deleteButton,deleteStudent)
 // Chame a função para carregar os dados quando a página for carregada
 document.addEventListener('DOMContentLoaded', updateStudentInfo);

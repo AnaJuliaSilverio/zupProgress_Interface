@@ -142,19 +142,25 @@ ul li.item-menu a .icon > img:hover {
 }
 #crud button{
     align-items: center;
-    width: 19rem;
+    width: 15rem;
     border-radius: 0.5rem;
-    height: 3rem;
+    height: 3.5rem;
     
     background: #FF7008;
     color: #fff;
     border: 2px solid #fff;
-    
+    font-size: .9rem;
     font-weight: bold;
     cursor: pointer;
     transition: 0.4s;  
 }
+
+#crud #feedback-student{
+    margin-right: 4rem;
+    background-color: #003566;
+}
 #crud #delete:hover{
+    margin-right: 4rem;
     background-color: #ff9041;
 }
 #crud #update:hover{
