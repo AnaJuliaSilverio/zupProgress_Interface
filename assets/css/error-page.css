@@ -1,0 +1,66 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat";
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    background-image: url("/assets/images/404-Space.jpg");/* Substitua 'caminho-da-imagem.jpg' pelo caminho real da sua imagem de fundo */
+    background-repeat: no-repeat;
+    background-size: cover;
+   /* Isso faz com que a imagem de fundo cubra todo o corpo */
+    background-attachment: fixed;
+    
+}
+.main{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+#image-area{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10rem;
+    margin-top: 1rem;
+    
+}
+
+#text-box{
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+#text-box h3{
+    font-size: 4rem;
+    margin-top: 3rem;
+}
+#text-box h4{
+    font-size: 2.5rem;
+    margin-top: 2rem;
+}
+#text-box p{
+    font-size:1.1rem;
+    margin-top: 1rem;
+}
+button{
+    transition: transform 0.3s;
+    margin-top: 3rem;
+    width: 10rem;
+    height: 3rem;
+    background: transparent;
+    border: 2px solid white;
+    border-radius: 5px;
+    color: white;
+    font-size:1.1rem;
+    cursor: pointer;
+}
+button:hover{
+    transform: scale(1.2);
+}
