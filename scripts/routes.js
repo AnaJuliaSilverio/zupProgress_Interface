@@ -2,7 +2,7 @@ var role = localStorage.getItem('role');
 function rediricionaLogin(){
     
     if (role === 'admin') {
-        window.location.href = 'student-register.html';
+        window.location.href = 'index-instructor.html';
     }
     if(role ==='user'){
         window.location.href = 'student-profile.html';
