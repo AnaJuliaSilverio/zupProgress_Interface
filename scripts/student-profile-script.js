@@ -1,11 +1,15 @@
-// Função para recuperar e atualizar os valores do estudante
 var image = ""
+var token = localStorage.getItem('jwtToken');
+var email = localStorage.getItem('email')
 function updateStudentInfo() {
-    var name = "Janaina"; // Substitua pelo nome do estudante que você deseja buscar
-    fetch(`http://localhost:8080/students/${name}`) // Substitua pelo endpoint correto
+    fetch(`http://localhost:8080/students/${email}`,{
+        headers: {
+            'Authorization': 'Bearer ' + token
+          },
+    })
         .then(response => response.json())
         .then(data => {
-            fetchImage(data.image);
+          
             document.getElementById("name").textContent = data.name;
             document.getElementById("email").textContent = data.email;
             document.getElementById("mentor").textContent = data.mentor;
@@ -13,15 +17,29 @@ function updateStudentInfo() {
             document.getElementById("age").textContent = data.age;
             document.getElementById("contract_end").textContent = data.contract_end;
             document.getElementById("project").textContent = data.project;
+             fetchImage(data.image);
         });
 }
 function fetchImage(filename) {
     const imageElement = document.getElementById("image-profile");
-    const downloadUrl = `http://localhost:8080/file/download/${filename}`; 
-    imageElement.src = downloadUrl;
-    return fetch(downloadUrl)
-      .then((response) => response.blob())
-      .then((blob) => URL.createObjectURL(blob));
-};
-// Chame a função para carregar os dados quando a página for carregada
+    const downloadUrl = `http://localhost:8080/file/download/${filename}`;
+    
+    return fetch(downloadUrl, {
+        headers: {
+            'Authorization': 'Bearer ' + token
+        },
+    })
+    .then((response) => {
+        
+        return response.blob();
+    })
+    .then((blob) => {
+        const imageUrl = URL.createObjectURL(blob);
+        imageElement.src = imageUrl;
+    })
+    .catch((error) => {
+        console.error(error);
+    });
+}
+document.addEventListener('DOMContentLoaded',verificaCredenciaisUser);
 document.addEventListener('DOMContentLoaded', updateStudentInfo);

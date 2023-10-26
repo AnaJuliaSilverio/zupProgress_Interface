@@ -1,8 +1,10 @@
 
+var token = localStorage.getItem('jwtToken');
 function getAllProjectName() {
     return fetch('http://localhost:8080/projects', {
       headers: {
-          'Accept': 'application/json'
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ' + token
       }
   })
     .then(response => response.json());
@@ -10,7 +12,8 @@ function getAllProjectName() {
 function getStudentsName(projectName){
     return fetch(`http://localhost:8080/projects/${projectName}`, {
         headers: {
-            'Accept': 'application/json'
+            'Accept': 'application/json',
+            'Authorization': 'Bearer ' + token
         }
     })
       .then(response => response.json());
@@ -35,12 +38,13 @@ function populateProjectSelect() {
 function getAllAtributes() {
     return fetch('http://localhost:8080/atributes', {
       headers: {
-          'Accept': 'application/json'
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ' + token
       }
   })
     .then(response => response.json());
   }
-  function preencherFeedbackAtributes() {
+function preencherFeedbackAtributes() {
     const registerForm = document.getElementById('register-form');
     getAllAtributes()
       .then(data => {
@@ -107,6 +111,7 @@ function getAllAtributes() {
 
   
 document.addEventListener("DOMContentLoaded", function () {
+    verificaCredenciaisAdm()
     populateProjectSelect();
     preencherFeedbackAtributes();
     const projectSelect = document.getElementById('project');
@@ -170,7 +175,8 @@ function fetchPost(formData,selectedName){
     fetch(`http://localhost:8080/feedback/Desafio/${selectedName}`, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json", // Defina o cabeçalho Content-Type para JSON
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer ' + token // Defina o cabeçalho Content-Type para JSON
       },
       body: JSON.stringify(formData), 
       })

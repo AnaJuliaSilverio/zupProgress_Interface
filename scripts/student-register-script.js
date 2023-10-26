@@ -7,6 +7,9 @@ const formDataImg = new FormData();
 pictureImage.innerHTML = pictureImageTxt;
 var nomeFile =""
 
+var token = localStorage.getItem('jwtToken');
+console.log(token)
+
 inputFile.addEventListener("change", function (e) {
   const inputTarget = e.target;
   const file = inputTarget.files[0];
@@ -40,6 +43,9 @@ function fetchImgPost(formData){
     fetch(uploadUrl, {
         method: "POST",
         body: formData,
+        headers: {
+          'Authorization': 'Bearer ' + token
+        },
       })
         .then((response) => response.json())
         .then((data) => {
@@ -50,11 +56,12 @@ function fetchImgPost(formData){
         });
 }
 function fetchPost(formData){
-    
+    console.log(token)
   fetch(studentUrl, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json", // Defina o cabeçalho Content-Type para JSON
+      "Content-Type": "application/json",
+      'Authorization': 'Bearer ' + token // Defina o cabeçalho Content-Type para JSON
     },
     body: JSON.stringify(formData), 
     })
@@ -89,7 +96,8 @@ form.addEventListener('submit',evento=>{
 function getAllProjectName() {
   return fetch('http://localhost:8080/projects', {
     headers: {
-        'Accept': 'application/json'
+        'Accept': 'application/json',
+        'Authorization': 'Bearer ' + token
     }
 })
   .then(response => response.json());
@@ -98,7 +106,8 @@ function getAllProjectName() {
 function getAllMentorName() {
   return fetch('http://localhost:8080/mentor', {
     headers: {
-        'Accept': 'application/json'
+        'Accept': 'application/json',
+        'Authorization': 'Bearer ' + token
     }
 })
   .then(response => response.json());
