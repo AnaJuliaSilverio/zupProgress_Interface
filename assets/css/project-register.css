@@ -1,0 +1,142 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat";
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    background-image: url("/assets/images/background-fun.jpg");
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-attachment: fixed;
+}
+
+.menu{
+    height: 100%;
+    position: fixed;
+    
+}
+nav.menu-lateral {
+    height: 100%;
+    background-color: #003566;
+    width: 70px;
+}
+
+ul {
+    height: 100%;
+    list-style-type: none;
+}
+
+ul li.item-menu a {
+    text-decoration: none;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+ul li.item-menu a .icon > img {
+    margin-top: 0.7rem;
+    width: 35px;
+    transition: transform 0.3s;
+}
+
+ul li.item-menu a .icon > img:hover {
+    transform: scale(1.2);
+}
+.main{
+    flex: 1;
+    margin-left: 3rem;
+
+}
+.main h1{
+    text-align:center;
+    padding: 1.5rem;
+    color: #555;
+    margin-left: 0.5rem;
+}
+#form-container {
+    flex: 1;
+    flex-wrap: wrap;
+
+}
+  
+#form-inner {
+    margin: 3rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+#register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    
+}
+  
+#container {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+input{
+    margin-right: .7rem;
+    width:300px ;
+}
+#register-form input {
+    padding: 0.8rem 0.6rem;
+    border: none;
+    border-radius: 5px;
+    border: 2px solid rgba(0, 137, 57, 0.49);
+
+}
+#descricao-projeto{
+    width: 100%;
+}
+#instituicao{
+    width: 100%;
+}
+#instituicao #trainingInstitution{
+    width: 100%;
+}
+#descricao-projeto #description{
+    width: 100%;
+    height: 150px;
+}
+#container #instituicao{
+    width: 100%;
+}
+#register-form input[type="submit"] {
+    background: #FF7008;
+    color: #fff;
+    border: 2px solid #fff;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.4s;
+    justify-content: center;
+  }
+  
+#register-form input[type="submit"]:hover {
+    background-color: #ff9041;
+  }
+#container label {
+    text-align: initial;
+    display: block;
+    margin-bottom: .5rem;
+    color: #001D3D;
+}
+#email{
+    width: 100%;
+}
+#email #emailLeadership{
+    width: 100%;
+}
+#email #emailInstructor{
+    width: 100%;
+}
