@@ -5,28 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zup Progress</title>
     <link rel="stylesheet" href="/assets/css/student-profile-instructor.css">
+    <link rel="stylesheet" href="/assets/css/menu-style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="menu" >
+    <div class="menu">
         <nav class="menu-lateral">
             <ul>
                 <li class="item-menu">
-                    <a href="#">
-                        <span class="icon">
-                            <img src="./assets/images/Person.png" alt="">
+                    <a href="index-instructor.html">
+                            <span class="icon">
+                                <img src="/assets/images/Vector.png" alt="">
                         </span>
                     </a>
                 </li>
                 <li class="item-menu">
-                    <a href="feedback-student.html">
+                    <a href="student-preview.html">
                         <span class="icon">
-                            <img src="./assets/images/rocket (1) 1.png" alt="">
+                            <img src="/assets/images/education (1) 1.png" alt="">
                         </span>
                     </a>
                 </li>
+                <li class="item-menu">
+                    <a href="feedback-instructor.html">
+                        <span class="icon">
+                            <img id="foguete" src="/assets/images/foguetereal.png" alt="">
+                        </span>
+                    </a>
+                </li>
+                <li class="item-menu">
+                    <a href="login.html" id="exit-icon">
+                        <span class="icon">
+                            <img id="exit" src="/assets/images/exit-icon.png" alt="">
+                        </span>
+                    </a>
+                </li>
+        
             </ul>
         </nav>
     </div>
@@ -71,20 +87,21 @@
             </div>
         </div>
         <div id="crud">
-            <a href="#">
+            <a href="#" id="link-feedback">
                 <button id="feedback-student">Visualizar Feedback</button>
             </a>
-            <a href="update-student-profile.html">
+            <a href="" id="link-update">
                 <button id="update">Atualizar Aluno</button>
             </a>
             
-            <a href="#">
-                <button id="delete">Deletar Aluno</button>
+            <a href="#" id="link-delete">
+                <button id="delete" onclick="deleteStudent()">Deletar Aluno</button>
             </a>
             
         </div>
        
     </div>
+    <script src="scripts/routes.js"></script>
     <script src="scripts/student-profile-instructor.js"></script>
 </body>
 </html>

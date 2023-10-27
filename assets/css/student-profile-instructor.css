@@ -154,13 +154,19 @@ ul li.item-menu a .icon > img:hover {
     cursor: pointer;
     transition: 0.4s;  
 }
-
+#crud #feedback-student:hover{
+    background-color: #044888;
+}
+#crud #delete:hover{
+    
+    background-color: #ff9041;
+}
 #crud #feedback-student{
     margin-right: 4rem;
     background-color: #003566;
 }
 #crud #delete:hover{
-    margin-right: 4rem;
+   
     background-color: #ff9041;
 }
 #crud #update:hover{

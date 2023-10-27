@@ -5,11 +5,18 @@ const uploadUrl = "http://localhost:8080/file/uploadFile";
 const studentUrl = "http://localhost:8080/students/6";
 const formDataImg = new FormData();
 var nomeFile =""
+var token = localStorage.getItem('jwtToken');
+const urlParams = new URLSearchParams(window.location.search);
+const emailUrl = urlParams.get("email");
 
 document.addEventListener('DOMContentLoaded', function () {
-    var name = "aparecida";
+
     
-    fetch(`http://localhost:8080/students/${name}`)
+    fetch(`http://localhost:8080/students/${emailUrl}`, {
+      headers: {
+          'Authorization': 'Bearer ' + token
+      }
+      })
         .then(response => response.json())
         .then(data => {
             fetchImage(data.image);
@@ -30,13 +37,26 @@ document.addEventListener('DOMContentLoaded', function () {
         .catch(error => console.error('Erro na requisição GET:', error));
 });
 function fetchImage(filename) {
-    const imageElement = document.getElementById("image-profile");
-    const downloadUrl = `http://localhost:8080/file/download/${filename}`; 
-    imageElement.src = downloadUrl;
-    return fetch(downloadUrl)
-      .then((response) => response.blob())
-      .then((blob) => URL.createObjectURL(blob));
-};
+  const imageElement = document.getElementById("image-profile");
+  const downloadUrl = `http://localhost:8080/file/download/${filename}`;
+  
+  return fetch(downloadUrl, {
+      headers: {
+          'Authorization': 'Bearer ' + token
+      },
+  })
+  .then((response) => {
+      
+      return response.blob();
+  })
+  .then((blob) => {
+      const imageUrl = URL.createObjectURL(blob);
+      imageElement.src = imageUrl;
+  })
+  .catch((error) => {
+      console.error(error);
+  });
+}
 
 inputFile.addEventListener("change", function (e) {
     const inputTarget = e.target;
@@ -72,7 +92,8 @@ function fetchPost(formData){
   fetch(studentUrl, {
     method: "PUT",
     headers: {
-      "Content-Type": "application/json", // Defina o cabeçalho Content-Type para JSON
+      "Content-Type": "application/json",
+      'Authorization': 'Bearer ' + token
     },
     body: JSON.stringify(formData), 
     })
@@ -138,7 +159,8 @@ function populateProjectSelect() {
 function getAllProjectName() {
   return fetch('http://localhost:8080/projects', {
     headers: {
-        'Accept': 'application/json'
+        'Accept': 'application/json',
+        'Authorization': 'Bearer ' + token
     }
 })
   .then(response => response.json());
@@ -146,8 +168,11 @@ function getAllProjectName() {
 function getAllMentorName() {
   return fetch('http://localhost:8080/mentor', {
     headers: {
-        'Accept': 'application/json'
+        'Accept': 'application/json',
+        'Authorization': 'Bearer ' + token
     }
 })
   .then(response => response.json());
 }
+
+document.addEventListener('DOMContentLoaded',verificaCredenciaisAdm)

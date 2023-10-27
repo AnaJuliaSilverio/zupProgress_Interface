@@ -48,8 +48,7 @@ function showInfos(projectName) {
 
                 const linkProfile = document.createElement("a");
                 linkProfile.id = "linkProfile" + index;
-
-
+                linkProfile.href = "student-profile-instructor.html" + "?email=" + encodeURIComponent(atributo.email);
                 const studentImg = document.createElement("img");
                 studentImg.id = "studentImg" + index;
                 
@@ -113,3 +112,4 @@ function clearPage() {
         container.removeChild(container.firstChild);
     }
 }
+document.addEventListener('DOMContentLoaded',verificaCredenciaisAdm)
