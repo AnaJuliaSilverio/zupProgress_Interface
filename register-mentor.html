@@ -53,24 +53,26 @@
                     <div id="container">
                         <div>
                             <label for="name">Nome</label>
-                            <input type="text" name="name" id="name" placeholder="Nome" />
+                            <input type="text" name="name" id="name" placeholder="Nome" required/>
                         </div>
                         <div>
                             <label>Inicio da mentoria</label>
                             <input
                                 type="date"
-                                name="contract_end"
-                                id="contract_end"
+                                name="startMentoring"
+                                id="startMentoring"
                                 placeholder="Término Contrato"
+                                required
                             />
                         </div>
                         <div>
                             <label>Término da mentoria</label>
                             <input
                                 type="date"
-                                name="contract_end"
-                                id="contract_end"
+                                name="endMentoring"
+                                id="endMentoring"
                                 placeholder="Término Contrato"
+                                required
                             />
                         </div>
                     </div>
@@ -82,6 +84,7 @@
                                 name="email"
                                 id="email"
                                 placeholder="Email"
+                                required
                             />
                         </div>
                     </div>
@@ -91,13 +94,13 @@
                             <div class="teste">
                                 <div class="form-group">
                                     <label for="checkbox1">
-                                        <input class="checkbox" id="checkbox1" type='radio' name="training" />
+                                        <input class="checkbox" id="training" type='radio' name="training" value="Sim"  required/>
                                         Sim
                                     </label>
                                 </div>
                                 <div class="form-group">
                                     <label for="checkbox2">
-                                        <input class="checkbox" id="checkbox2" type='radio' name="training" />
+                                        <input class="checkbox" id="training" type='radio' name="training" value="Não" required />
                                         Não
                                     </label>
                                 </div>
@@ -113,6 +116,7 @@
                                 name="bio"
                                 id="bio"
                                 placeholder="Biografia"
+                                required
                             ></textarea>
                         </div>
                     </div>
@@ -124,6 +128,6 @@
             </div>
         </div>
     </div>
-    <script src="scripts/student-register-script.js"></script>
+    <script src="scripts/register-mentor.js"></script>
 </body>
 </html>
