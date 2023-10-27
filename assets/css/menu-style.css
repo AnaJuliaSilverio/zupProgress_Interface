@@ -18,16 +18,20 @@
   .menu {
     height: 100%;
     position: fixed;
+    
   }
   nav.menu-lateral {
     height: 100%;
     background-color: #003566;
     width: 70px;
+    
   }
   ul {
+   
     height: 100%;
     list-style-type: none;
   }
+
   
   ul li.item-menu a {
     text-decoration: none;
@@ -47,8 +51,15 @@
     margin-top: -0.2rem;
     margin-left: -0.75rem;
   }
+  #person-icon{
+    width: 41px;
+  }
   ul li.item-menu a .icon > img:hover {
     transform: scale(1.2);
+  }
+  #exit{
+    margin-top: -0.1rem;
+    width: 40px;
   }
   
 

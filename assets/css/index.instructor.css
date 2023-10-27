@@ -1,7 +1,7 @@
 
 .home {
   flex: 1;
-  margin-left: 3rem;
+ 
 }
 
 .title {
@@ -44,4 +44,10 @@
 
 .rectangle:hover {
   transform: scale(1.05);
+}
+span{
+  text-align: initial;
+  display: block;
+  margin-bottom: .5rem;
+  color: #001D3D;
 }

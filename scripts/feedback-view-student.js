@@ -152,3 +152,4 @@ function preencherFeedback() {
 
 
 document.addEventListener('DOMContentLoaded', populateProjectSelect);
+document.addEventListener('DOMContentLoaded',verificaAutenticacao);

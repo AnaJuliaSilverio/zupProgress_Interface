@@ -1,4 +1,5 @@
 var role = localStorage.getItem('role');
+var token = localStorage.getItem('token');
 function rediricionaLogin(){
     
     if (role === 'admin') {
@@ -19,3 +20,15 @@ function verificaCredenciaisUser(){
         window.location.href = 'error-page.html';
     }
 }
+function verificaAutenticacao(){
+    if(!token){
+        window.location.href = 'error-page.html';
+    }
+}
+function exit(){
+    const exitIcon = document.getElementById("exit");
+    exitIcon.addEventListener("click",function(){
+        localStorage.clear();
+    })
+}
+document.addEventListener('DOMContentLoaded',exit);

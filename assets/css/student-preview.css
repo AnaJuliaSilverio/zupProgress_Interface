@@ -1,4 +1,5 @@
 
+
 .main {
   flex: 1;
   margin-left: 3rem;
@@ -23,7 +24,7 @@
   padding: 2rem;
   display: flex;
   align-items: center;
-  justify-content: center;
+  
 }
 #students {
   display: flex;
@@ -34,7 +35,7 @@
   width: 400px;
   border: 1px solid rgba(0, 137, 57, 0.49);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.08);
-  background-color: #f4f4f4;
+  background-color: hsl(0, 0%, 100%);
   border-radius: 10px;
   transition: transform 0.3s;
   cursor: pointer;
@@ -44,6 +45,9 @@
 }
 #students h3 {
   margin-left: 1.3rem;
+  font-size: 1rem;
+  color: #001D3D;
+  text-align:start
 }
 #students a {
   display: flex;
