@@ -4,7 +4,6 @@ var email;
 const studentUrl = "http://localhost:8080/auth/login";
 const errologin= document.getElementById("erro-login")
 function fetchPost(formData) {
-    //localStorage.clear();
     fetch(studentUrl, {
         method: "POST",
         headers: {

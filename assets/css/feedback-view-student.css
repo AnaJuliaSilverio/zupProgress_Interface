@@ -68,7 +68,7 @@
     flex-wrap: wrap;
     padding: 2rem;
     display: flex;
-   
+   justify-content: center;
 }
 #esquerda{
     flex: 50%;
@@ -129,3 +129,58 @@ select {
  select::-ms-expand {
     display: none;
  }
+ #nenhum-feedback{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5rem;
+    display: none;
+ }
+ #nenhum-feedback p{
+    font-size: 1.3rem;
+    text-align: center;
+    color: #001D3D;
+ }
+#progress-bar {
+    border: 2px solid #0089397d;
+    width: 100%;
+    background-color: #fdfdfd;
+    height: 20px;
+    border-radius: 10px;
+}
+
+#progress {
+    border-radius: 10px;
+    width: 66.66%;
+    height: 100%;
+    background-color: #4CAF50; /* Cor da barra de progresso */
+   
+}
+#container-conclusion{
+   
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-right: 8rem;
+    margin-left: 3rem;
+    margin-bottom: 2rem;
+}
+#container-conclusion p{
+    font-size: 1.3rem;
+    color: #001D3D;
+}
+#conclusion-bar{
+    margin-top: 1rem;
+    display: flex;
+    
+    
+}
+#conclusion-bar p{
+    margin-left: 1rem;
+    line-height:25px;
+    font-size: 0.9rem;
+    color: #616161;
+    white-space: nowrap;
+}

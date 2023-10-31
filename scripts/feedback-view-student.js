@@ -35,6 +35,15 @@ function getAllFeedback(selectedValueDesafio,selectedValueAvaliacao) {
   })
     .then(response => response.json());
   }
+  function getConclusion(selectedValueDesafio) {
+    return fetch(`http://localhost:8080/feedback/conclusion/${selectedValueDesafio}/${email}`, {
+      headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ' + token
+      }
+  })
+    .then(response => response.json());
+  }
 function populateProjectSelect() {
     const selectElement = document.getElementById('desafio');
     
@@ -81,9 +90,19 @@ selectElementAvalicao.addEventListener('change', function() {
             selectedValueAvaliacao="INSTRUCTOR_EVALUATION"
         }else if(selectedOption.value==="avaliacao-mentor"){
             selectedValueAvaliacao="MENTOR_ASSESSMENT"
-        } 
-        getAllFeedback(selectedValueDesafio,selectedValueAvaliacao);
-        preencherFeedback();
+        }
+        else if(selectedOption.value==="conclusao"){
+            selectedValueAvaliacao="CONCLUSION"
+        }
+        if(selectedOption.value==="conclusao"){
+            getConclusion(selectedValueDesafio);
+            preencherFeedbackConclusion();
+        }else{
+            getAllFeedback(selectedValueDesafio,selectedValueAvaliacao);
+            preencherFeedback();
+        }
+        
+        
     } else {
         console.log('Nenhuma opção selecionada');
     }
@@ -107,8 +126,11 @@ function preencherFeedback() {
 
     getAllFeedback(selectedValueDesafio,selectedValueAvaliacao)
       .then(data => {
+       
         if (data && data.length > 0) {
+            document.getElementById("nenhum-feedback").style.display="none"
           data.forEach((atributo, index) => {
+            
             const divEsquerda = document.createElement("div");
             divEsquerda.id = "esquerda";
 
@@ -156,13 +178,67 @@ function preencherFeedback() {
             conteudoContainer.appendChild(divEsquerda);
           });
         } else {
-          console.error('A lista de atributos está vazia ou não está definida.');
+            document.getElementById("nenhum-feedback").style.display="block"
+         
         }
       })
       .catch(error => {
         console.error('Erro ao obter os atributos:', error);
       });
   }
+  function preencherFeedbackConclusion() {
+    getConclusion(selectedValueDesafio, selectElementAvalicao)
+        .then(data => {
+            
+            
+            if (data && Object.keys(data).length > 0) {
+                document.getElementById("nenhum-feedback").style.display="none"
+                conteudoContainer.innerHTML = ""; // Limpar o conteúdo anterior
+
+                for (const [atributo, status] of Object.entries(data)) {
+                    const containerConclusion = document.createElement("div");
+                    containerConclusion.id = "container-conclusion";
+
+                    const atributoLabel = document.createElement("p");
+                    atributoLabel.textContent = atributo;
+
+                    const divConclusionBar = document.createElement("div");
+                    divConclusionBar.id = "conclusion-bar";
+
+                    const divProgressBar = document.createElement("div");
+                    divProgressBar.id = "progress-bar";
+
+                    const divProgress = document.createElement("div");
+                    divProgress.id = "progress";
+                    divProgress.style.width = getStatusWidth(status);
+
+                    const statusP = document.createElement("p");
+                    statusP.textContent = status;
+
+                    divProgressBar.appendChild(divProgress);
+                    divConclusionBar.appendChild(divProgressBar);
+                    divConclusionBar.appendChild(statusP);
+                    containerConclusion.appendChild(atributoLabel);
+                    containerConclusion.appendChild(divConclusionBar);
+                    conteudoContainer.appendChild(containerConclusion);
+                }
+            } else {
+                document.getElementById("nenhum-feedback").style.display = "block";
+            }
+        });
+}
+
+// Função para obter a largura da barra de progresso com base no status
+function getStatusWidth(status) {
+    if (status === "acima-esperado") {
+        return "100%";
+    } else if (status === "dentro-esperado") {
+        return "66.66%";
+    } else if (status === "abaixo-esperado") {
+        return "33.33%";
+    }
+}
+
 
 
 document.addEventListener('DOMContentLoaded', populateProjectSelect);

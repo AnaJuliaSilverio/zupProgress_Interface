@@ -3,6 +3,7 @@ var email;
 var token = localStorage.getItem('jwtToken');
 const urlParams = new URLSearchParams(window.location.search);
 const emailUrl = urlParams.get("email");
+
 function updateStudentInfo() {
    
     fetch(`http://localhost:8080/students/${emailUrl}`, {
@@ -15,11 +16,23 @@ function updateStudentInfo() {
             document.getElementById("name").textContent = data.name;
             document.getElementById("email").textContent = data.email;
             email = data.email
+            
+            if(data.pcd==="false"){
+                document.getElementById("pcd-info").style.display='none'
+            }else{
+                document.getElementById("typeOfDisability").textContent = data.typeOfDisability;
+                document.getElementById("pcd").textContent = data.pcd
+            }
+            
             document.getElementById("mentor").textContent = data.mentor;
             document.getElementById("city").textContent = data.city;
             document.getElementById("age").textContent = data.age;
-            document.getElementById("contract_end").textContent = data.contract_end;
+            const date = new Date(data.contract_end);
+            document.getElementById("contract_end").textContent = date.toLocaleDateString('pt-BR', {
+                timeZone: 'UTC',
+              });;
             document.getElementById("project").textContent = data.project;
+            document.getElementById("bio").textContent =data.bio
             if(data.image){
                 fetchImage(data.image);
             }else{
@@ -39,7 +52,6 @@ function fetchImage(filename) {
         },
     })
     .then((response) => {
-        
         return response.blob();
     })
     .then((blob) => {

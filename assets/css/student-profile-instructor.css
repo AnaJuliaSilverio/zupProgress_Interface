@@ -114,12 +114,15 @@ ul li.item-menu a .icon > img:hover {
     width: 555px;
     margin-bottom: 1rem; 
 }
-
+#pcd-div{
+    margin-right: 3rem;
+}
 #mentor-box .valor{
     width: 555px;
     margin-bottom: 1rem; 
 }
 #info-ultimo{
+    margin-bottom: 1rem;
     margin-top: 1rem;
     margin-left: 2rem;
     display: flex;
@@ -175,4 +178,21 @@ ul li.item-menu a .icon > img:hover {
 #crud #update{
     margin-right: 4rem;
     background: #008939;
+}
+#bio-info{
+    margin-top: 1rem;
+    margin-left: 2rem;
+    display: flex;
+    gap: 0.5rem;
+}
+#bio-info .valor{
+    width: 555px;
+    height: 90px;
+}
+#pcd-info{
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    margin-left: 2rem;
+    display: flex;
+    gap: 0.5rem;
 }

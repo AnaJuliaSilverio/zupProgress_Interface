@@ -122,9 +122,18 @@ form.addEventListener('submit',evento=>{
     form.reset();
     pictureImage.innerHTML = pictureImageTxt;
     alert("Aluno cadastrado com sucesso!")
+    window.location.href ="student-profile-instructor.html"+"?email=" + encodeURIComponent(data.email);
+    
   
 })
-
+function verificaData(){
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = (today.getMonth() + 1).toString().padStart(2, '0');
+  const day = today.getDate().toString().padStart(2, '0');
+  const currentDate = `${year}-${month}-${day}`;
+  document.getElementById('contract_end').min = currentDate;
+}
 function getAllProjectName() {
   return fetch('http://localhost:8080/projects', {
     headers: {
@@ -182,6 +191,7 @@ function populateMentorSelect() {
 // Chame a função para preencher o select quando a página estiver pronta.
 document.addEventListener('DOMContentLoaded', populateProjectSelect);
 document.addEventListener('DOMContentLoaded', populateMentorSelect);
+document.addEventListener('DOMContentLoaded', verificaData);
 
 
 const pcdSelect = document.getElementById("pcd");

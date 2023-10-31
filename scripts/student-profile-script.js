@@ -15,7 +15,10 @@ function updateStudentInfo() {
             document.getElementById("mentor").textContent = data.mentor;
             document.getElementById("city").textContent = data.city;
             document.getElementById("age").textContent = data.age;
-            document.getElementById("contract_end").textContent = data.contract_end;
+            const date = new Date(data.contract_end);
+            document.getElementById("contract_end").textContent = date.toLocaleDateString('pt-BR', {
+                timeZone: 'UTC',
+              });;
             document.getElementById("project").textContent = data.project;
             if(data.image){
                 fetchImage(data.image);
