@@ -1,58 +1,12 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Montserrat";
-}
-
-body {
-  height: 100vh;
-  display: flex;
-  flex-wrap: nowrap;
-  background-image: url("/assets/images/background-fun.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-}
-
-.menu {
-  height: 100%;
-  position: fixed;
-}
-nav.menu-lateral {
-  height: 100%;
-  background-color: #003566;
-  width: 70px;
-}
-ul {
-  height: 100%;
-  list-style-type: none;
-}
-
-ul li.item-menu a {
-  text-decoration: none;
-  padding: 1rem;
-  display: flex;
-  align-items: center;
-}
-
-ul li.item-menu a .icon > img {
-  margin-top: 0.7rem;
-  width: 35px;
-  transition: transform 0.3s;
-}
-
-ul li.item-menu a .icon > img:hover {
-  transform: scale(1.2);
-}
 
 .home {
   flex: 1;
+ 
 }
 
 .title {
   text-align: center;
-  padding: 2.5rem;
+  padding: 1.5rem;
   color: #555;
   margin-left: 0.5rem;
 }
@@ -90,4 +44,10 @@ ul li.item-menu a .icon > img:hover {
 
 .rectangle:hover {
   transform: scale(1.05);
+}
+span{
+  text-align: initial;
+  display: block;
+  margin-bottom: .5rem;
+  color: #001D3D;
 }

@@ -17,7 +17,14 @@ function updateStudentInfo() {
             document.getElementById("age").textContent = data.age;
             document.getElementById("contract_end").textContent = data.contract_end;
             document.getElementById("project").textContent = data.project;
-             fetchImage(data.image);
+            if(data.image){
+                fetchImage(data.image);
+            }else{
+                const imageElement = document.getElementById("image-profile");
+                imageElement.src ="./assets/images/aluno-sem-foto.png"
+                
+            }
+             
         });
 }
 function fetchImage(filename) {

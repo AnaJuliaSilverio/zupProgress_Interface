@@ -9,10 +9,9 @@ body {
     height: 100vh;
     display: flex;
     flex-wrap: wrap;
-    background-image: url("/assets/images/fun-fundo-logo-area\ \(1\).png");/* Substitua 'caminho-da-imagem.jpg' pelo caminho real da sua imagem de fundo */
+    background-image: url("/assets/images/fun-fundo-logo-area\ \(1\).png");
     background-repeat: no-repeat;
     background-size: contain;
-   /* Isso faz com que a imagem de fundo cubra todo o corpo */
     background-attachment: fixed;
     
 }

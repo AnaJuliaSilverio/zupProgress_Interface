@@ -3,6 +3,7 @@ const pictureImage = document.querySelector(".picture__image");
 const pictureImageTxt = "Escolha uma imagem";
 const uploadUrl = "http://localhost:8080/file/uploadFile";
 const studentUrl = "http://localhost:8080/students";
+const registerUrl = "http://localhost:8080/auth/register"
 const formDataImg = new FormData();
 pictureImage.innerHTML = pictureImageTxt;
 var nomeFile =""
@@ -74,6 +75,25 @@ function fetchPost(formData){
         console.error("Erro ao enviar a imagem:", error);
       });
 }
+function fetchPostRegister(formData){
+  console.log(token)
+  fetch(registerUrl, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    'Authorization': 'Bearer ' + token // Defina o cabeçalho Content-Type para JSON
+  },
+  body: JSON.stringify(formData), 
+  })
+
+    .then((data) => {
+      console.log(data)
+      console.log("Resposta do servidor:", data);
+    })
+    .catch((error) => {
+      console.error("Erro ao enviar a imagem:", error);
+    });
+}
 
 const form = document.querySelector('form');
 
@@ -81,12 +101,24 @@ form.addEventListener('submit',evento=>{
    
     evento.preventDefault();
     const formData = new FormData(form);
-    formData.append('image',nomeFile);
-    const data = Object.fromEntries(formData);
-    console.log(data)
+    if(nomeFile){
+      formData.append('image',nomeFile);
+    }
     
-    fetchImgPost(formDataImg)
+    const data = Object.fromEntries(formData);
+    const registerdata = {
+      login: data.email,
+      password: "senha123",
+      role: 'USER'
+    };
+   
+    if(formData.image){
+      fetchImgPost(formDataImg)
+    }
+    
     fetchPost(data)
+    fetchPostRegister(registerdata)
+
     form.reset();
     pictureImage.innerHTML = pictureImageTxt;
     alert("Aluno cadastrado com sucesso!")

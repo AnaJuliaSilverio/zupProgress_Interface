@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zup Progress</title>
+    <link rel="stylesheet" href="/assets/css/menu-style.css">
     <link rel="stylesheet" href="/assets/css/student-register-style.css">
-    <link rel="stylesheet" href="assets/css/menu-style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -15,7 +15,7 @@
                 <li class="item-menu">
                     <a href="index-instructor.html">
                             <span class="icon">
-                                <img src="/assets/images/Vector.png" alt=""></a>
+                                <img src="/assets/images/Vector.png" alt="">
                         </span>
                     </a>
                 </li>
@@ -45,16 +45,25 @@
         </nav>
     </div>
     <div class="main">
-        <h1>Cadastrar Aluno</h1>
-        <div id="img-container">
-            <div id="imagem-perfil">
-                <label class="picture" for="picture__input" tabIndex="0">
-                    <span class="picture__image"></span>
-                  </label>
-                  
-                  <input type="file" name="picture__input" id="picture__input">
+        <h1>Atualizar Aluno</h1>
+        
+            
+            <div id="img-container">
+                <div id="imagem-perfil">
+                    <label class="picture" for="picture__input" tabIndex="0">
+                        <span class="picture__image">
+                            <img src="" id="image-profile" alt="Imagem de Perfil">
+                        <div class="overlay">
+                            <p>Atualizar foto</p>
+                        </div>
+                        </span>
+                        
+                      </label>
+                      
+                      <input type="file" name="picture__input" id="picture__input">
+                </div>
             </div>
-        </div>
+        
         <div id="form-container">
             <div id="form-inner">
                 <form id="register-form">
@@ -62,7 +71,7 @@
                     <div id="container">
                         <div>
                             <label for="name">Nome</label>
-                            <input type="text" name="name" id="name" placeholder="Nome" />
+                            <input type="text" name="name" id="name"/>
                         </div>
                         <div>
                             <label>Idade</label>
@@ -70,7 +79,7 @@
                                 type="number"
                                 name="age"
                                 id="age"
-                                placeholder="Idade"
+                                
                             />
                         </div>
                         <div>
@@ -79,14 +88,14 @@
                                 type="date"
                                 name="contract_end"
                                 id="contract_end"
-                                placeholder="Término Contrato"
+                                
                             />
                         </div>
                     </div>
                     <div id="container">
                         <div>
                             <label>Cidade</label>
-                            <input type="text" name="city" id="city" placeholder="Cidade" />
+                            <input type="text" name="city" id="city"  />
                         </div>
                         <div>
                             <label>Email</label>
@@ -94,13 +103,13 @@
                                 type="email"
                                 name="email"
                                 id="email"
-                                placeholder="Email"
+                                
                             />
                         </div>
                         <div class="select">
                             <span>Projeto</span>
                             <select name="project" id="project">
-                               <option selected disabled>Escolha um projeto</option>
+                               <option id="selected-project"  selected disabled>Escolha um projeto</option>
                                
                             </select>
                          </div>
@@ -110,7 +119,7 @@
                         <div class="select">
                             <span>Mentor</span>
                             <select name="mentor" id="mentor">
-                               <option selected disabled>Escolha um mentor</option>
+                               <option id="selected-mentor" selected disabled>Escolha um mentor</option>
                                
                             </select>
                          </div>
@@ -143,13 +152,12 @@
                             /></div>
                     </div>
                     <div>
-                        <input type="submit" value="Salvar" />
+                        <input type="submit" value="Atualizar" />
                     </div>
                 </form>
             </div>
         </div>
     </div>
-    <script src="scripts/routes.js"></script>
-    <script src="scripts/student-register-script.js"></script>
+    <script src="scripts/update-profile-student.js"></script>
 </body>
 </html>

@@ -1,7 +1,21 @@
 var selectedValueAvaliacao
 var selectedValueDesafio
+const adminMenu = document.getElementById('admin-menu');
+const userMenu = document.getElementById('user-menu');
+var email
 var token = localStorage.getItem('jwtToken');
-var email = localStorage.getItem('email')
+var role = localStorage.getItem('role');
+if(role=="admin"){
+    const urlParams = new URLSearchParams(window.location.search);
+    email = urlParams.get("email");
+    adminMenu.style.display = 'block';
+        userMenu.style.display = 'none'; 
+}else{
+    email = localStorage.getItem('email')
+    adminMenu.style.display = 'none';
+        userMenu.style.display = 'block'; 
+}
+
 function getAllChallengeName() {
     return fetch('http://localhost:8080/challenge', {
       headers: {
@@ -152,3 +166,4 @@ function preencherFeedback() {
 
 
 document.addEventListener('DOMContentLoaded', populateProjectSelect);
+document.addEventListener('DOMContentLoaded',verificaAutenticacao);
