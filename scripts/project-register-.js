@@ -1,10 +1,11 @@
 const projectUrl = "http://localhost:8080/project";
-
+var token = localStorage.getItem('jwtToken');
 function cadastrarProjeto(formData) {
   fetch(projectUrl, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      'Authorization': 'Bearer ' + token
     },
     body: JSON.stringify(formData),
   })
@@ -43,7 +44,7 @@ function getAllLiderselect() {
   return fetch('http://localhost:8080/leadership', {
     headers: {
         'Accept': 'application/json',
-        'Authorization': 'Bearer ' 
+        'Authorization': 'Bearer ' + token 
     }
 })
   .then(response => response.json());
@@ -82,7 +83,7 @@ function getAllInstrutorselect() {
   return fetch('http://localhost:8080/instructor', {
     headers: {
         'Accept': 'application/json',
-        'Authorization': 'Bearer ' 
+        'Authorization': 'Bearer ' + token 
     }
 })
   .then(response => response.json());

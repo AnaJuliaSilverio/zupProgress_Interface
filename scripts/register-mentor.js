@@ -1,11 +1,12 @@
 const mentorURL = "http://localhost:8080/mentor";
-
+var token = localStorage.getItem('jwtToken');
 function cadastrarMentor(formData) {
   fetch(mentorURL, {
     method: "POST",
-    'Authorization': 'Bearer ' ,
+
     headers: {
-      "Content-Type": "application/json", 
+      "Content-Type": "application/json",
+      'Authorization': 'Bearer ' + token
     },
     body: JSON.stringify(formData), 
   })

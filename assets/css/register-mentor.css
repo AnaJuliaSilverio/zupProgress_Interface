@@ -1,49 +1,21 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Montserrat";
-}
-
-body {
-    height: 100vh;
-    display: flex;
-    flex-wrap: wrap;
-    background-image: url("/assets/images/background-fun.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-}
-
-.menu{
-    height: 100%;
-    position: fixed;
-    margin-top: 1rem;
-    
-}
-nav.menu-lateral {
-  margin: 0;
-    height: 100%;
-    background-color: #003566;
-    width: 70px;
-}
 
 .main{
     flex: 1;
     margin-left: 3rem;
-    margin: 2rem;
-    padding: 2rem;
+  
 
 }
 .main h1{
-    text-align:center;
-    color: #555;
-    margin-left: 0.5rem;
+  text-align:center;
+  padding: 1.5rem;
+  color: #555;
+  margin-left: 0.5rem;
+ 
 }
 
   
 #form-inner {
-    margin: 6rem;
+    
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -188,72 +160,19 @@ input{
 }
 
 .select span {
+  margin-bottom: 1rem;
+    margin-top: 2rem;
     text-align: initial;
     display: block;
+    font-size: 1.05rem;
     margin-bottom: 0.5rem;
     color: #001D3D;
 }
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
 
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #003566;
-    width: 70px;
-    height: 100%;
-    position: fixed;
-}
 
-.menu {
-  position: fixed;
-  margin: 0;
-  padding: 0;
-  top: 0;
-  left: 0;
-  width: 70px; /* Largura da barra lateral */
-  height: 100vh; /* Altura da tela inteira */
-  background-color: #003566;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
 
-.menu-lateral {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
 
-.item-menu {
-  text-align: center;
-  padding: 10px 0;
-}
 
-.icon img {
-  width: 70%;
-  height: 100%;
-}
 
-ul li.item-menu a {
-  text-decoration: none;
-  padding: 1rem;
-  display: flex;
-  align-items: center;
-}
-ul li.item-menu a .icon > img {
-  margin-top: 0.7rem;
-  width: 35px;
-  transition: transform 0.3s;
-}
-ul li.item-menu a .icon > img:hover {
-  transform: scale(1.2);
-}
+
 
