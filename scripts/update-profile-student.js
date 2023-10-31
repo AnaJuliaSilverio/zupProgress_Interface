@@ -2,13 +2,13 @@ const inputFile = document.querySelector("#picture__input");
 const pictureImage = document.querySelector(".picture__image");
 const pictureImageTxt = "Escolha uma imagem";
 const uploadUrl = "http://localhost:8080/file/uploadFile";
-const studentUrl = "http://localhost:8080/students/6";
+
 const formDataImg = new FormData();
 var nomeFile =""
 var token = localStorage.getItem('jwtToken');
 const urlParams = new URLSearchParams(window.location.search);
 const emailUrl = urlParams.get("email");
-
+const studentUrl = `http://localhost:8080/students/${emailUrl}`;
 document.addEventListener('DOMContentLoaded', function () {
 
     
@@ -56,6 +56,23 @@ function fetchImage(filename) {
   .catch((error) => {
       console.error(error);
   });
+}
+function fetchImgPost(formData){
+    
+  fetch(uploadUrl, {
+      method: "POST",
+      body: formData,
+      headers: {
+        'Authorization': 'Bearer ' + token
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Resposta do servidor:", data);
+      })
+      .catch((error) => {
+        console.error("Erro ao enviar a imagem:", error);
+      });
 }
 
 inputFile.addEventListener("change", function (e) {
@@ -119,6 +136,7 @@ form.addEventListener('submit',evento=>{
     console.log(data)
     
     fetchPost(data)
+    fetchImgPost(formDataImg)
   
 })
 

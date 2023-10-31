@@ -9,6 +9,32 @@ function getAllProjectName() {
   })
     .then(response => response.json());
 }
+function getAllChallengeName() {
+  return fetch('http://localhost:8080/challenge', {
+    headers: {
+        'Accept': 'application/json',
+        'Authorization': 'Bearer ' + token
+    }
+})
+  .then(response => response.json());
+}
+function populateChallengeSelect() {
+  const selectElement = document.getElementById('desafio');
+  
+  getAllChallengeName()
+      .then(challengeNames => {
+          challengeNames.forEach(challengeName => {
+              const option = document.createElement('option');
+              option.value = challengeName;
+              option.text = challengeName;
+              selectElement.appendChild(option);
+          });
+      })
+      .catch(error => {
+          console.error('Erro ao buscar os nomes dos desafios:', error);
+      });
+}
+
 function getStudentsName(projectName){
     return fetch(`http://localhost:8080/projects/${projectName}`, {
         headers: {
@@ -112,10 +138,12 @@ function preencherFeedbackAtributes() {
   
 document.addEventListener("DOMContentLoaded", function () {
     verificaCredenciaisAdm()
+    populateChallengeSelect()
     populateProjectSelect();
     preencherFeedbackAtributes();
     const projectSelect = document.getElementById('project');
     const nameSelect = document.getElementById('name');
+    const challengeSelect = document.getElementById('desafio')
     projectSelect.addEventListener('change', function () {
         const selectedProject = projectSelect.value;
         nameSelect.innerHTML = '<option selected disabled>Escolha um aluno</option>';
@@ -143,11 +171,13 @@ document.addEventListener("DOMContentLoaded", function () {
         
         const selectedProject = projectSelect.value;
         const selectedName = nameSelect.value;
+        const selectedDesafio = challengeSelect.value;
         
         
         var dataForm = new FormData(form);
         dataForm.delete('project');
         dataForm.delete('name');
+        dataForm.delete('desafio')
         var feedbackList = [];
         var formData = dataForm.entries(dataForm);
         
@@ -165,14 +195,15 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log(feedbackList)
         
       
-        fetchPost(feedbackList,selectedName)
+        fetchPost(feedbackList,selectedName,selectedDesafio)
+       
        
     });
     
 });
-function fetchPost(formData,selectedName){
+function fetchPost(formData,selectedName,selectedDesafio){
     
-    fetch(`http://localhost:8080/feedback/Desafio/${selectedName}`, {
+    fetch(`http://localhost:8080/feedback/${selectedDesafio}/${selectedName}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -184,6 +215,7 @@ function fetchPost(formData,selectedName){
         .then((data) => {
           console.log(data)
           console.log("Resposta do servidor:", data);
+          alert("Feedback Cadastrado com sucesso!")
         })
         .catch((error) => {
           console.error("Erro ao enviar a imagem:", error);
