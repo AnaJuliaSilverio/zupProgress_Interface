@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zup Progress</title>
-    <link rel="stylesheet" href="../assets/css/project-register.css">
+    <link rel="stylesheet" href="/assets/css/project-register.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -47,15 +47,14 @@
         <div id="form-container">
             <div id="form-inner">
                 <label class="picture" for="picture__input" tabIndex="0"></label>
-                <form id="register-form" >
-                    
+                <form id="register-form">
                     <div id="container">
                         <div>
                             <label for="name">Nome</label>
                             <input type="text" name="name" id="name" placeholder="Nome do projeto" required />
                         </div>
                         <div>
-                            <label>Inicio do Projeto</label>
+                            <label>Início do Projeto</label>
                             <input
                                 type="date"
                                 class="startDate"
@@ -68,7 +67,7 @@
                             <label>Término do Projeto</label>
                             <input
                                 type="date"
-                                class="data-fim"
+                                class="dateEnd"
                                 name="dateEnd"
                                 id="dateEnd"
                                 required
@@ -77,14 +76,15 @@
                     </div>
                     <div id="container">
                         <div>
-                            <label>Instrutor</label>
-                            <input type="text" class="nameInstructor" name="nameInstructor" id="nameInstructor" placeholder="Instrutor" required />
+                            <label for="Instructor">Escolha o Instrutor</label>
+                            <select name="Instructor" id="Instructor" onchange="updateEmailInstructor()">
+                                <option selected disabled>Escolha o Instrutor</option>
+                            </select>
                         </div>
                         <div id="email">
                             <label>Email do Instrutor</label>
                             <input
                                 type="email"
-                                class="emailInstructor"
                                 name="emailInstructor"
                                 id="emailInstructor"
                                 placeholder="Email Instrutor"
@@ -94,8 +94,10 @@
                     </div>
                     <div id="container">
                         <div>
-                            <label>Liderança</label>
-                            <input type="text" class="nameLeadership" id="nameLeadership" placeholder="Liderança" required />
+                            <label for="leadership">Escolha a liderança</label>
+                            <select name="leadership" id="leadership" onchange="updateEmail()">
+                                <option selected disabled>Escolha uma liderança</option>
+                            </select>
                         </div>
                         <div id="email">
                             <label>Email da liderança</label>
@@ -107,7 +109,7 @@
                                 required
                             />
                         </div>
-                    </div>
+                    </div>                    
                     <div id="container">
                         <div id="instituicao">
                             <div>

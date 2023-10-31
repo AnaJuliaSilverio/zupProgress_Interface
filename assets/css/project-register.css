@@ -1,3 +1,4 @@
+
 * {
     margin: 0;
     padding: 0;
@@ -140,3 +141,13 @@ input{
 #email #emailInstructor{
     width: 100%;
 }
+select {
+    border: 2px solid #0089397d;
+    border-radius: 5px;
+    width:300px ;
+    padding: 0.63rem 0.4rem;
+    cursor:pointer;
+    font-size: 1em;
+    border-radius: .25em;
+    margin-right: .7rem;
+ }
