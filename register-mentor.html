@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/assets/images/LogoSimbolo_ (1) 1.png" type="image/x-icon">
+    <title>Zup Progress</title>
+    <link rel="stylesheet" href="/assets/css/register-mentor.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="menu">
+        <nav class="menu-lateral">
+            <ul>
+                <li class="item-menu">
+                    <a href="#">
+                        <span class="icon">
+                            <img src="../assets/images/Vector.png" alt="">
+                        </span>
+                    </a>
+                </li>
+                <li class="item-menu">
+                    <a href="#">
+                        <span class="icon">
+                            <img src="../assets/images/Person.png" alt="">
+                        </span>
+                    </a>
+                </li>
+                <li class="item-menu">
+                    <a href="feedback-student.html">
+                        <span class="icon">
+                            <img src="../assets/images/rocket (1) 1.png" alt="">
+                        </span>
+                    </a>
+                </li>
+                <li class="item-menu">
+                    <a href="feedback-student.html">
+                        <span class="icon">
+                            <img src="../assets/images/education (1) 1.png" alt="">
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="main">
+        <h1>Cadastrar mentor</h1>
+        <div id="form-container">
+            <div id="form-inner">
+                <form id="register-form">
+                    
+                    <div id="container">
+                        <div>
+                            <label for="name">Nome</label>
+                            <input type="text" name="name" id="name" placeholder="Nome" required/>
+                        </div>
+                        <div>
+                            <label>Inicio da mentoria</label>
+                            <input
+                                type="date"
+                                name="startMentoring"
+                                id="startMentoring"
+                                placeholder="Término Contrato"
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label>Término da mentoria</label>
+                            <input
+                                type="date"
+                                name="endMentoring"
+                                id="endMentoring"
+                                placeholder="Término Contrato"
+                                required
+                            />
+                        </div>
+                    </div>
+                    <div id="container">
+                        <div>
+                            <label>Email</label>
+                            <input
+                                type="email"
+                                name="email"
+                                id="email"
+                                placeholder="Email"
+                                required
+                            />
+                        </div>
+                    </div>
+                
+                        <div class="select">
+                            <span>O mentor recebeu treinamento para essa atividade?</span>
+                            <div class="teste">
+                                <div class="form-group">
+                                    <label for="checkbox1">
+                                        <input class="checkbox" id="training" type='radio' name="training" value="Sim"  required/>
+                                        Sim
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label for="checkbox2">
+                                        <input class="checkbox" id="training" type='radio' name="training" value="Não" required />
+                                        Não
+                                    </label>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        
+                    <div id="container">
+                        <div id="biografia">
+                            <label>Biografia</label>
+                            <textarea
+                                name="bio"
+                                id="bio"
+                                placeholder="Biografia"
+                                required
+                            ></textarea>
+                        </div>
+                    </div>
+                
+                    <div>
+                        <input type="submit" value="Salvar" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="scripts/register-mentor.js"></script>
+</body>
+</html>
