@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zup Progress</title>
+    <link rel="stylesheet" href="/assets/css/project-register.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="menu">
+        <nav class="menu-lateral">
+            <ul>
+                <li class="item-menu">
+                    <a href="#">
+                        <span class="icon">
+                            <img src="../assets/images/Vector.png" alt="">
+                        </span>
+                    </a>
+                </li>
+                <li class="item-menu">
+                    <a href="#">
+                        <span class="icon">
+                            <img src="../assets/images/Person.png" alt="">
+                        </span>
+                    </a>
+                </li>
+                <li class="item-menu">
+                    <a href="feedback-student.html">
+                        <span class="icon">
+                            <img src="../assets/images/rocket (1) 1.png" alt="">
+                        </span>
+                    </a>
+                </li>
+                <li class="item-menu">
+                    <a href="feedback-student.html">
+                        <span class="icon">
+                            <img src="../assets/images/education (1) 1.png" alt="">
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="main">
+        <h1>Cadastrar Projeto</h1>
+        <div id="form-container">
+            <div id="form-inner">
+                <label class="picture" for="picture__input" tabIndex="0"></label>
+                <form id="register-form">
+                    <div id="container">
+                        <div>
+                            <label for="name">Nome</label>
+                            <input type="text" name="name" id="name" placeholder="Nome do projeto" required />
+                        </div>
+                        <div>
+                            <label>Início do Projeto</label>
+                            <input
+                                type="date"
+                                class="startDate"
+                                name="startDate"
+                                id="startDate"
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label>Término do Projeto</label>
+                            <input
+                                type="date"
+                                class="dateEnd"
+                                name="dateEnd"
+                                id="dateEnd"
+                                required
+                            />
+                        </div>
+                    </div>
+                    <div id="container">
+                        <div>
+                            <label for="Instructor">Escolha o Instrutor</label>
+                            <select name="Instructor" id="Instructor" onchange="updateEmailInstructor()">
+                                <option selected disabled>Escolha o Instrutor</option>
+                            </select>
+                        </div>
+                        <div id="email">
+                            <label>Email do Instrutor</label>
+                            <input
+                                type="email"
+                                name="emailInstructor"
+                                id="emailInstructor"
+                                placeholder="Email Instrutor"
+                                required
+                            />
+                        </div>
+                    </div>
+                    <div id="container">
+                        <div>
+                            <label for="leadership">Escolha a liderança</label>
+                            <select name="leadership" id="leadership" onchange="updateEmail()">
+                                <option selected disabled>Escolha uma liderança</option>
+                            </select>
+                        </div>
+                        <div id="email">
+                            <label>Email da liderança</label>
+                            <input
+                                type="email"
+                                name="emailLeadership"
+                                id="emailLeadership"
+                                placeholder="Email Liderança"
+                                required
+                            />
+                        </div>
+                    </div>                    
+                    <div id="container">
+                        <div id="instituicao">
+                            <div>
+                                <label>Instituição formadora</label>
+                                <input type="text" class="trainingInstitution" name="trainingInstitution" id="trainingInstitution" placeholder="Instituição formadora" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div id="container">
+                        <div id="descricao-projeto">
+                            <label>Descrição do projeto</label>
+                            <input
+                                type="text"
+                                class="description"
+                                name="description"
+                                id="description"
+                                placeholder="Descrição"
+                                required
+                            />
+                        </div>
+                    </div>
+                    <div>
+                        <input type="submit" value="Salvar" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="scripts/project-register.js"></script>
+</body>
+</html>
