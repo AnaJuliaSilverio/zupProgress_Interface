@@ -135,7 +135,23 @@ function preencherFeedbackAtributes() {
       
   }
 
-  
+function fetchPostEmail(formData) {
+    
+    fetch("http://localhost:8080/email/send", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            'Authorization': 'Bearer ' + token
+        },
+        body: JSON.stringify(formData),
+    })
+    .then((data) => {
+        console.log("Resposta do servidor:", data);
+    })
+    .catch((error) => {
+        console.error("Erro ao enviar a imagem:", error);
+    });
+}
 document.addEventListener("DOMContentLoaded", function () {
     verificaCredenciaisAdm()
     populateChallengeSelect()
@@ -168,7 +184,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
     feedbackForm.addEventListener('submit', function (event) {
         event.preventDefault();
-        
+        var formDataEmail = sendFormDataEmail();
         const selectedProject = projectSelect.value;
         const selectedName = nameSelect.value;
         const selectedDesafio = challengeSelect.value;
@@ -196,7 +212,7 @@ document.addEventListener("DOMContentLoaded", function () {
         
       
         fetchPost(feedbackList,selectedName,selectedDesafio)
-       
+        fetchPostEmail(formDataEmail)
        
     });
     

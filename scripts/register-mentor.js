@@ -11,11 +11,19 @@ function cadastrarMentor(formData) {
     body: JSON.stringify(formData), 
   })
 
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("Projeto cadastrado com sucesso:", data);
-      
-    })
+  .then((response) => {
+    if (!response.ok) {
+      return response.json().then((error) => {
+        const emailPlaceholder = document.getElementById('email');
+        emailPlaceholder.value = error.message
+        emailPlaceholder.style.border="3px solid red"
+      });
+    }
+    else{
+      alert("Mentor cadastrado com sucesso!")
+      form.reset();
+    }
+  })
     .catch((error) => {
       console.error("Erro ao cadastrar projeto:", error);
       

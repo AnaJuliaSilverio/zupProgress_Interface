@@ -7,9 +7,9 @@ const registerUrl = "http://localhost:8080/auth/register"
 const formDataImg = new FormData();
 pictureImage.innerHTML = pictureImageTxt;
 var nomeFile =""
-
+var senha
+var formDataEmail
 var token = localStorage.getItem('jwtToken');
-console.log(token)
 
 inputFile.addEventListener("change", function (e) {
   const inputTarget = e.target;
@@ -38,7 +38,6 @@ inputFile.addEventListener("change", function (e) {
   }
 });
 
-
 function fetchImgPost(formData){
     
     fetch(uploadUrl, {
@@ -48,7 +47,16 @@ function fetchImgPost(formData){
           'Authorization': 'Bearer ' + token
         },
       })
-        .then((response) => response.json())
+        .then((response) => {
+      if (!response.ok) {
+        return response.json().then((error) => {
+          const imageElement = document.getElementById("image-profile");
+          imageElement.src ="./assets/images/aluno-sem-foto.png"
+        });
+      }
+      
+      })
+        
         .then((data) => {
           console.log("Resposta do servidor:", data);
         })
@@ -66,16 +74,51 @@ function fetchPost(formData){
     },
     body: JSON.stringify(formData), 
     })
-
-      .then((data) => {
-        console.log(data)
-        console.log("Resposta do servidor:", data);
-      })
+    .then((response) => {
+      if (!response.ok) {
+        return response.json().then((error) => {
+          console.error("Erro do servidor:", error.message);
+          const emailPlaceholder = document.getElementById('email');
+          emailPlaceholder.value = error.message
+          emailPlaceholder.style.border="3px solid red"
+          
+        });
+      }
+      else{
+        alert("Aluno cadastrado com sucesso!")
+        form.reset();
+        
+      }
+    })
       .catch((error) => {
         console.error("Erro ao enviar a imagem:", error);
       });
 }
-function fetchPostRegister(formData){
+function fetchPostEmail(formData) {
+    
+  fetch("http://localhost:8080/email/send", {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json",
+          'Authorization': 'Bearer ' + token
+      },
+      body: JSON.stringify(formData),
+  })
+  .then((data) => {
+      console.log("Resposta do servidor:", data);
+  })
+  .catch((error) => {
+      console.error("Erro ao enviar a imagem:", error);
+  });
+}
+
+function fetchPostRegister(email){
+  
+  const formData = {
+    login: email,
+    password: senha,
+    role: 'USER'
+  };
   console.log(token)
   fetch(registerUrl, {
   method: "POST",
@@ -98,6 +141,8 @@ function fetchPostRegister(formData){
 const form = document.querySelector('form');
 
 form.addEventListener('submit',evento=>{
+  senha = gerarSenha()
+  formDataEmail = sendEmailPassword(senha)
    
     evento.preventDefault();
     const formData = new FormData(form);
@@ -106,24 +151,19 @@ form.addEventListener('submit',evento=>{
     }
     
     const data = Object.fromEntries(formData);
-    const registerdata = {
-      login: data.email,
-      password: "senha123",
-      role: 'USER'
-    };
+    
    
     if(formData.image){
       fetchImgPost(formDataImg)
     }
     
     fetchPost(data)
-    fetchPostRegister(registerdata)
-
-    form.reset();
-    pictureImage.innerHTML = pictureImageTxt;
-    alert("Aluno cadastrado com sucesso!")
-    window.location.href ="student-profile-instructor.html"+"?email=" + encodeURIComponent(data.email);
+    fetchPostRegister(data.email)
+    fetchPostEmail(formDataEmail)
     
+    pictureImage.innerHTML = pictureImageTxt;
+    
+   
   
 })
 function verificaData(){

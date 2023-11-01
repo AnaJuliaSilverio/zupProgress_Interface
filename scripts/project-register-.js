@@ -1,5 +1,9 @@
-const projectUrl = "http://localhost:8080/project";
+const projectUrl = "http://localhost:8080/projects";
 var token = localStorage.getItem('jwtToken');
+const leadershipDataMap = new Map();
+const instructorDataMap = new Map();
+var selectedLeadership
+var selectedInstructor
 function cadastrarProjeto(formData) {
   fetch(projectUrl, {
     method: "POST",
@@ -9,16 +13,36 @@ function cadastrarProjeto(formData) {
     },
     body: JSON.stringify(formData),
   })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("Projeto cadastrado com sucesso:", data);
-    })
+  .then((response) => {
+    if (!response.ok) {
+      return response.json().then((error) => {
+        console.error("Erro do servidor:", error.message);
+        const namePlaceholder = document.getElementById('name');
+        namePlaceholder.value = error.message
+        namePlaceholder.style.border="3px solid red"
+      });
+    }
+    else{
+      alert("Projeto cadastrado com sucesso!")
+      form.reset();
+    }
+  }) 
     .catch((error) => {
       console.error("Erro ao cadastrar projeto:", error);
     });
 }
 
 const form = document.querySelector("#register-form");
+function verificaDataStart() {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = (today.getMonth() + 1).toString().padStart(2, '0');
+  const day = today.getDate().toString().padStart(2, '0');
+  const currentDate = `${year}-${month}-${day}`;
+  document.querySelector("#startDate").min = currentDate;
+}
+
+
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -28,13 +52,14 @@ form.addEventListener("submit", (event) => {
   const trainingInstitution = document.querySelector("#trainingInstitution").value;
   const startDate = document.querySelector("#startDate").value;
   const dateEnd = document.querySelector("#dateEnd").value;
-
   const formData = {
     name: name,
     description: description,
     trainingInstitution: trainingInstitution,
     startDate: startDate,
     dateEnd: dateEnd,
+    leadership: selectedLeadership,
+    instructor:selectedInstructor
   };
 
   cadastrarProjeto(formData);
@@ -52,7 +77,7 @@ function getAllLiderselect() {
 
 function populateLeadershipSelect() {
   const selectElement = document.getElementById('leadership');
-
+  
   getAllLiderselect()
       .then(leadershipData => {
           leadershipData.forEach(leadership => {
@@ -60,12 +85,34 @@ function populateLeadershipSelect() {
               option.value = leadership.email; 
               option.text = leadership.name;
               selectElement.appendChild(option);
+              leadershipDataMap.set(leadership.email, leadership);
+              
           });
       })
       .catch(error => {
           console.error('Erro ao buscar as lideranças:', error);
       });
 }
+document.addEventListener("DOMContentLoaded", function () {
+  verificaDataStart()
+  const selectElement = document.getElementById('leadership');
+  const selectInstuctor = document.getElementById('Instructor');
+  selectElement.addEventListener('change', function () {
+    const selectedEmail = selectElement.value
+    selectedLeadership = leadershipDataMap.get(selectedEmail);
+   
+     
+  });
+  selectInstuctor.addEventListener('change', function () {
+    const selectedEmailIns = selectInstuctor.value
+    selectedInstructor = instructorDataMap.get(selectedEmailIns);
+    
+     
+  });
+  populateLeadershipSelect()
+  populateInstructorSelect()
+
+});
 
 function updateEmail() {
   const selectElement = document.getElementById('leadership');
@@ -75,8 +122,7 @@ function updateEmail() {
   emailInput.value = selectedEmail;
 }
 
-document.addEventListener('DOMContentLoaded', populateLeadershipSelect);
-document.addEventListener('DOMContentLoaded', populateInstructorSelect);
+
 
 
 function getAllInstrutorselect() {
@@ -99,6 +145,7 @@ function populateInstructorSelect() {
               option.value = Instructor.email; 
               option.text = Instructor.name;
               selectElement.appendChild(option);
+              instructorDataMap.set(Instructor.email, Instructor);
           });
       })
       .catch(error => {
