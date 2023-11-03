@@ -15,17 +15,6 @@ if(role=="admin"){
     adminMenu.style.display = 'none';
         userMenu.style.display = 'block'; 
 }
-
-function getAllChallengeName() {
-    return fetch('http://localhost:8080/challenge', {
-      headers: {
-          'Accept': 'application/json',
-          'Authorization': 'Bearer ' + token
-      }
-  })
-    .then(response => response.json());
-}
-
 function getAllFeedback(selectedValueDesafio,selectedValueAvaliacao) {
     return fetch(`http://localhost:8080/feedback/${selectedValueDesafio}/${selectedValueAvaliacao}/${email}`, {
       headers: {
@@ -44,23 +33,6 @@ function getAllFeedback(selectedValueDesafio,selectedValueAvaliacao) {
   })
     .then(response => response.json());
   }
-function populateProjectSelect() {
-    const selectElement = document.getElementById('desafio');
-    
-    getAllChallengeName()
-        .then(challengeNames => {
-            challengeNames.forEach(challengeName => {
-                const option = document.createElement('option');
-                option.value = challengeName;
-                option.text = challengeName;
-                selectElement.appendChild(option);
-            });
-        })
-        .catch(error => {
-            console.error('Erro ao buscar os nomes dos desafios:', error);
-        });
-}
-
 
 function createIcon(fill) {
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -77,10 +49,10 @@ function createIcon(fill) {
     return svg;
 }
 
-const selectElementAvalicao = document.getElementById('avaliacao'); // Obtenha o elemento select por ID
+const selectElementAvalicao = document.getElementById('avaliacao');
 
 selectElementAvalicao.addEventListener('change', function() {
-    const selectedOption = selectElementAvalicao.options[selectElementAvalicao.selectedIndex]; // Obtenha a opção selecionada
+    const selectedOption = selectElementAvalicao.options[selectElementAvalicao.selectedIndex];
     conteudoContainer.innerHTML = '';
     if (selectedOption) {
         if(selectedOption.value==="auto-avaliacao"){
@@ -107,10 +79,10 @@ selectElementAvalicao.addEventListener('change', function() {
         console.log('Nenhuma opção selecionada');
     }
 });
-const selectElementDesafio = document.getElementById('desafio'); // Obtenha o elemento select por ID
+const selectElementDesafio = document.getElementById('desafio');
 
 selectElementDesafio.addEventListener('change', function() {
-    const selectedOption = selectElementDesafio.options[selectElementDesafio.selectedIndex]; // Obtenha a opção selecionada
+    const selectedOption = selectElementDesafio.options[selectElementDesafio.selectedIndex];
     conteudoContainer.innerHTML = '';
     if (selectedOption) {
         selectedValueDesafio = selectedOption.value;
@@ -122,8 +94,6 @@ selectElementDesafio.addEventListener('change', function() {
 
 const conteudoContainer = document.getElementsByClassName("container")[0];
 function preencherFeedback() {
-   
-
     getAllFeedback(selectedValueDesafio,selectedValueAvaliacao)
       .then(data => {
        
@@ -188,9 +158,7 @@ function preencherFeedback() {
   }
   function preencherFeedbackConclusion() {
     getConclusion(selectedValueDesafio, selectElementAvalicao)
-        .then(data => {
-            
-            
+        .then(data => { 
             if (data && Object.keys(data).length > 0) {
                 document.getElementById("nenhum-feedback").style.display="none"
                 conteudoContainer.innerHTML = ""; // Limpar o conteúdo anterior
@@ -228,7 +196,6 @@ function preencherFeedback() {
         });
 }
 
-// Função para obter a largura da barra de progresso com base no status
 function getStatusWidth(status) {
     if (status === "acima-esperado") {
         return "100%";
@@ -238,8 +205,5 @@ function getStatusWidth(status) {
         return "33.33%";
     }
 }
-
-
-
-document.addEventListener('DOMContentLoaded', populateProjectSelect);
+document.addEventListener('DOMContentLoaded', populateChallengeSelect);
 document.addEventListener('DOMContentLoaded',verificaAutenticacao);

@@ -11,33 +11,6 @@ function getAllStudents(projectName) {
     .then(response => response.json());
 }
 
-function getAllProjectName() {
-    return fetch('http://localhost:8080/projects', {
-      headers: {
-          'Accept': 'application/json',
-          'Authorization': 'Bearer ' + token
-      }
-  })
-    .then(response => response.json());
-  }
-
-function populateProjectSelect() {
-    const selectElement = document.getElementById('project');
-    
-    getAllProjectName()
-        .then(projectNames => {
-            projectNames.forEach(projectName => {
-                const option = document.createElement('option');
-                option.value = projectName;
-                option.text = projectName;
-                selectElement.appendChild(option);
-            });
-        })
-        .catch(error => {
-            console.error('Erro ao buscar os nomes dos projetos:', error);
-        });
-}
-
 function showInfos(projectName) {
     getAllStudents(projectName)
         .then(data => {
@@ -61,7 +34,6 @@ function showInfos(projectName) {
                 }else{
                     studentImg.src ="./assets/images/aluno-sem-foto.png"
                 }
-                
                 linkProfile.appendChild(studentImg);
                 linkProfile.appendChild(studentName);
                 students.appendChild(linkProfile);
@@ -71,30 +43,7 @@ function showInfos(projectName) {
 }
 
 
-
-function fetchImage(filename, imageElement) {
-    
-    const downloadUrl = `http://localhost:8080/file/download/${filename}`;
-
-    return fetch(downloadUrl, {
-        headers: {
-            'Authorization': 'Bearer ' + token
-        },
-    })
-    .then((response) => {
-        return response.blob();
-    })
-    .then((blob) => {
-        const imageUrl = URL.createObjectURL(blob);
-        imageElement.src = imageUrl;
-    })
-    .catch((error) => {
-        console.error(error);
-    });
-}
-
 document.addEventListener("DOMContentLoaded", function () {
-    
     const projectSelect = document.getElementById('project');
     projectSelect.addEventListener('change', function () {
         container.innerHTML = "";

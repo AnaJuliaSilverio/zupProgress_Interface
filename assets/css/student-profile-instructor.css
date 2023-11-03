@@ -14,7 +14,12 @@ body {
     background-size: cover; /* Isso faz com que a imagem de fundo cubra todo o corpo */
     background-attachment: fixed;
 }
-
+span{
+    text-align: initial;
+    display: block;
+    margin-bottom: .5rem;
+    color: #001D3D;
+ }
 .menu{
     height: 100%;
     position: fixed;

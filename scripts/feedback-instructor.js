@@ -1,85 +1,11 @@
 
 var token = localStorage.getItem('jwtToken');
-function getAllProjectName() {
-    return fetch('http://localhost:8080/projects', {
-      headers: {
-          'Accept': 'application/json',
-          'Authorization': 'Bearer ' + token
-      }
-  })
-    .then(response => response.json());
-}
-function getAllChallengeName() {
-  return fetch('http://localhost:8080/challenge', {
-    headers: {
-        'Accept': 'application/json',
-        'Authorization': 'Bearer ' + token
-    }
-})
-  .then(response => response.json());
-}
-function populateChallengeSelect() {
-  const selectElement = document.getElementById('desafio');
-  
-  getAllChallengeName()
-      .then(challengeNames => {
-          challengeNames.forEach(challengeName => {
-              const option = document.createElement('option');
-              option.value = challengeName;
-              option.text = challengeName;
-              selectElement.appendChild(option);
-          });
-      })
-      .catch(error => {
-          console.error('Erro ao buscar os nomes dos desafios:', error);
-      });
-}
-
-function getStudentsName(projectName){
-    return fetch(`http://localhost:8080/projects/${projectName}`, {
-        headers: {
-            'Accept': 'application/json',
-            'Authorization': 'Bearer ' + token
-        }
-    })
-      .then(response => response.json());
-}
-
-function populateProjectSelect() {
-    const selectElement = document.getElementById('project');
-    
-    getAllProjectName()
-        .then(projectNames => {
-            projectNames.forEach(projectName => {
-                const option = document.createElement('option');
-                option.value = projectName;
-                option.text = projectName;
-                selectElement.appendChild(option);
-            });
-        })
-        .catch(error => {
-            console.error('Erro ao buscar os nomes dos projetos:', error);
-        });
-}
-function getAllAtributes() {
-    return fetch('http://localhost:8080/atributes', {
-      headers: {
-          'Accept': 'application/json',
-          'Authorization': 'Bearer ' + token
-      }
-  })
-    .then(response => response.json());
-  }
 function preencherFeedbackAtributes() {
     const registerForm = document.getElementById('register-form');
     getAllAtributes()
       .then(data => {
-       
-       
         if (data && data.length > 0) {
-            
-
-          data.forEach((atributo, index) => {
+          data.forEach((atributo) => {
             const checkboxDivMain = document.createElement('div');
             checkboxDivMain.id = `checkbox`;
             const feedbackContainer = document.createElement('div');
@@ -112,11 +38,7 @@ function preencherFeedbackAtributes() {
              feedbackContainer.appendChild(tituloDiv);
             feedbackContainer.appendChild(checkboxDivMain);
             registerForm.appendChild(feedbackContainer);
-            });
-
-           
-            
-            
+            });      
           });
           const button = document.createElement('div');
             const inputButton = document.createElement('input');
@@ -124,7 +46,6 @@ function preencherFeedbackAtributes() {
             inputButton.value = 'Salvar';
             button.appendChild(inputButton);
             registerForm.appendChild(button);
-
         } else {
           console.error('A lista de atributos está vazia ou não está definida.');
         }
@@ -133,10 +54,8 @@ function preencherFeedbackAtributes() {
         console.error('Erro ao obter os atributos:', error);
       });
       
-  }
-
+}
 function fetchPostEmail(formData) {
-    
     fetch("http://localhost:8080/email/send", {
         method: "POST",
         headers: {
@@ -204,13 +123,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 status: value
 
             };
-            console.log(key);
-            console.log(value);
             feedbackList.push(feedbackDTO);
         }
-        console.log(feedbackList)
-        
-      
+  
         fetchPost(feedbackList,selectedName,selectedDesafio)
         fetchPostEmail(formDataEmail)
        
@@ -218,7 +133,6 @@ document.addEventListener("DOMContentLoaded", function () {
     
 });
 function fetchPost(formData,selectedName,selectedDesafio){
-    
     fetch(`http://localhost:8080/feedback/${selectedDesafio}/${selectedName}`, {
       method: "POST",
       headers: {
@@ -227,9 +141,7 @@ function fetchPost(formData,selectedName,selectedDesafio){
       },
       body: JSON.stringify(formData), 
       })
-  
         .then((data) => {
-          console.log(data)
           console.log("Resposta do servidor:", data);
           alert("Feedback Cadastrado com sucesso!")
         })

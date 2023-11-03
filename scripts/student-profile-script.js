@@ -1,6 +1,8 @@
 var image = ""
 var token = localStorage.getItem('jwtToken');
 var email = localStorage.getItem('email')
+
+
 function updateStudentInfo() {
     fetch(`http://localhost:8080/students/${email}`,{
         headers: {
@@ -21,7 +23,7 @@ function updateStudentInfo() {
               });;
             document.getElementById("project").textContent = data.project;
             if(data.image){
-                fetchImage(data.image);
+                fetchImage(data.image,document.getElementById("image-profile"));
             }else{
                 const imageElement = document.getElementById("image-profile");
                 imageElement.src ="./assets/images/aluno-sem-foto.png"
@@ -29,27 +31,6 @@ function updateStudentInfo() {
             }
              
         });
-}
-function fetchImage(filename) {
-    const imageElement = document.getElementById("image-profile");
-    const downloadUrl = `http://localhost:8080/file/download/${filename}`;
-    
-    return fetch(downloadUrl, {
-        headers: {
-            'Authorization': 'Bearer ' + token
-        },
-    })
-    .then((response) => {
-        
-        return response.blob();
-    })
-    .then((blob) => {
-        const imageUrl = URL.createObjectURL(blob);
-        imageElement.src = imageUrl;
-    })
-    .catch((error) => {
-        console.error(error);
-    });
 }
 document.addEventListener('DOMContentLoaded',verificaCredenciaisUser);
 document.addEventListener('DOMContentLoaded', updateStudentInfo);

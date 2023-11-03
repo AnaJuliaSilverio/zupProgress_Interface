@@ -121,10 +121,6 @@ function updateEmail() {
   const selectedEmail = selectElement.value;
   emailInput.value = selectedEmail;
 }
-
-
-
-
 function getAllInstrutorselect() {
   return fetch('http://localhost:8080/instructor', {
     headers: {
