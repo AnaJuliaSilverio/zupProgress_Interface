@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zup Progress</title>
+    <link rel="stylesheet" href="/assets/css/feedback-register.css">
+    <link rel="icon" href="/assets/images/logoZup.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="/assets/css/menu-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="menu">
+        <nav class="menu-lateral">
+            <ul>
+                <li class="item-menu">
+                    <a href="index-instructor.html">
+                        <span class="icon">
+                            <img src="/assets/images/Vector.png" alt="">
+                        </span>
+                    </a>
+                </li>
+                <li class="item-menu">
+                    <a href="student-preview.html">
+                        <span class="icon">
+                            <img src="/assets/images/education (1) 1.png" alt="">
+                        </span>
+                    </a>
+                </li>
+                <li class="item-menu">
+                    <a href="feedback-instructor.html">
+                        <span class="icon">
+                            <img id="foguete" src="/assets/images/foguetereal.png" alt="">
+                        </span>
+                    </a>
+                </li>
+                <li class="item-menu">
+                    <a href="login.html" id="exit-icon">
+                        <span class="icon">
+                            <img id="exit" src="/assets/images/exit-icon.png" alt="">
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="main">
+        <h1>Cadastrar item feedback</h1>
+        <div id="containerAtributes">
+            <div class="select">
+                <span class="atributesListar">Ver todos</span>
+                <select name="atributesListar" id="atributesListar">
+                    <option selected disabled>Itens feedback</option>
+                   
+                </select>
+            </div>
+            <form id="register-form">
+                <div class="teste">
+                    <div>
+                        <span class="atributes">Cadastrar novo item</span>
+                        <input type="text" name="atributes" id="atributes" placeholder="Ex: Trabalho em equipe" required/>
+                    </div>
+                </div>
+                <div id="aviso" style="display: none;">Salvo com sucesso!</div>
+                <div>
+                    <input type="submit" value="Salvar" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="scripts/routes.js"></script>
+    <script src="scripts/feedback-register.js"></script>
+</body>
+</html>
