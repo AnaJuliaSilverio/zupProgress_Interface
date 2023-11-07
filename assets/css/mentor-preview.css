@@ -1,0 +1,118 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.main h1 {
+    text-align: center;
+    padding: 1.5rem;
+    color: #555;
+    margin-left: 0.5rem;
+  }
+.main {
+    flex: 1;
+    align-items: center;
+    margin-left: 3rem;
+    flex-direction:column;
+  }
+
+#profile {
+    padding: 1.5rem;
+}
+
+#profile h1 {
+    color: #555;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+#info-primeiro {
+    margin-left: 2rem;
+    display: flex;
+    gap: 0.5rem;
+}
+.select {
+    display: flex;
+    margin-left: 5rem;
+    align-items: center;
+    margin-top: 5rem;
+    
+}
+
+select {
+    border: 2px solid #0089397d;
+    border-radius: 5px;
+    width:300px ;
+    padding: 0.63rem 0.4rem;
+    cursor:pointer;
+    font-size: 1em;
+    border-radius: .25em;
+    margin-right: .7rem;
+
+ }
+ span{
+    text-align: initial;
+    display: block;
+    margin-bottom: .5rem;
+    color: #001D3D;
+ }
+ select::-ms-expand {
+    display: none;
+ }
+
+.valor {
+    padding: 0.8rem;
+    line-height: 8px;
+    margin: 1rem 0;
+    width: 555px;
+    height: 40px;
+    text-align: left; 
+    color: #858585;
+    border: 2px solid rgba(0, 137, 57, 0.49);
+    border-radius: 5px;
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.06);
+}
+
+#titulo {
+    color: #001D3D;
+    font-weight: 600;
+}
+#mentor-box .valor {
+    width: 100px; 
+}
+
+#bio{
+    margin-top: 1rem;
+}
+
+#bio .valor {
+    width: 555px; 
+    height: 90px;
+    margin-right: 2rem;
+    line-height: 17px;
+    
+
+}
+#info-ultimo {
+    margin-top: 1rem;
+    margin-left: 2rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+#dates-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#inicioMentoria, #terminoMentoria {
+    flex: 1;
+    margin-right: 2.2rem; 
+
+}
+#inicioMentoria .valor, #terminoMentoria .valor {
+    width: 255px; 
+    
+}
+
