@@ -1,25 +1,24 @@
 const atributesURL = "http://localhost:8080/atributes";
-
+var token = localStorage.getItem('jwtToken');
 
 function cadastrarAtributo(formData) {
     fetch(atributesURL, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            'Authorization': 'Bearer '
+            'Authorization': 'Bearer ' + token
         },
         body: JSON.stringify(formData),
     })
     .then((response) => response.json())
     .then((data) => {
-        console.log("Atributo cadastrado com sucesso:", data);
         const aviso = document.getElementById('aviso');
         aviso.style.display = 'block';
-    
-        // Esconder o aviso após 3 segundos (3000 milissegundos)
+        
+        populateAtributesSelect();
         setTimeout(() => {
           aviso.style.display = 'none';
-        }, 3000);
+        }, 1000);
     })
     .catch((error) => {
         console.error("Erro ao cadastrar atributo:", error);
@@ -46,7 +45,7 @@ function getAllAtributesselect() {
         method: 'GET',
         headers: {
             'Accept': 'application/json',
-            'Authorization': 'Bearer '
+            'Authorization': 'Bearer ' + token
         }
     })
     .then(response => {
