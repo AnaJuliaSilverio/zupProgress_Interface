@@ -111,18 +111,18 @@ function preencherFeedback() {
             h2.textContent = atributo.atributes;
             const h4 = document.createElement("h4");
            
-            if (atributo.status === "acima-esperado") {
+            if (atributo.status === "Acima do esperado") {
                 for (let i = 0; i < 3; i++) {
                     h4.appendChild(createIcon("green"));
                 }
                 h4.appendChild(document.createTextNode("Acima do esperado"));
-            } else if (atributo.status === "dentro-esperado") {
+            } else if (atributo.status === "Dentro do esperado") {
                 for (let i = 0; i < 2; i++) {
                     h4.appendChild(createIcon("green"));
                 }
                 h4.appendChild(createIcon("grey"))
                 h4.appendChild(document.createTextNode("Dentro do esperado"));
-            } else if (atributo.status === "abaixo-esperado") {
+            } else if (atributo.status === "Abaixo do esperado") {
                 h4.appendChild(createIcon("green"));
                 h4.appendChild(createIcon("grey"))
                 h4.appendChild(createIcon("grey"))

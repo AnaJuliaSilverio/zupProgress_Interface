@@ -16,7 +16,7 @@ function preencherFeedbackAtributes() {
             tituloDiv.innerHTML = `<p>${atributo}</p>`;
   
             // Crie uma div para os checkboxes com id e label personalizados
-            const checkboxLabels = ['abaixo', 'dentro', 'acima'];
+            const checkboxLabels = ['Abaixo', 'Dentro', 'Acima'];
             checkboxLabels.forEach(label => {
               const input = document.createElement('input');
               const labelElement = document.createElement('label');
@@ -25,7 +25,7 @@ function preencherFeedbackAtributes() {
               input.type = 'radio';
               input.id = id;
               input.name = `${atributo}`;
-              input.value = `${label}-esperado`;
+              input.value = `${label} do esperado`;
   
               labelElement.htmlFor = id;
               labelElement.textContent = `${label} do esperado`;
