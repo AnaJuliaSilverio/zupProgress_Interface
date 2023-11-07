@@ -1,29 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Zup Progress</title>
-    <link rel="stylesheet" href="/assets/css/mentor-preview.css">
-    <link rel="icon" href="/assets/images/logoZup.png" type="image/x-icon">
-    <link rel="stylesheet" href="/assets/css/menu-style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;500;600&display=swap" rel="stylesheet">
-</head>
-<body>
-    <div class="menu" >
+    <link rel="stylesheet" href="/assets/css/mentor-preview.css" />
+    <link rel="icon" href="/assets/images/logoZup.png" type="image/x-icon" />
+    <link rel="stylesheet" href="/assets/css/menu-style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="menu">
         <nav class="menu-lateral">
             <ul>
                 <li class="item-menu">
-                    <a href="student-profile.html">
-                        <span class="icon">
-                            <img id="person-icon" src="/assets/images/Person.png" alt="">
-                         </span>
+                    <a href="index-instructor.html">
+                            <span class="icon">
+                                <img src="/assets/images/Vector.png" alt="">
+                        </span>
                     </a>
                 </li>
                 <li class="item-menu">
-                    <a href="feedback-view-student.html">
+                    <a href="student-preview.html">
+                        <span class="icon">
+                            <img src="/assets/images/education (1) 1.png" alt="">
+                        </span>
+                    </a>
+                </li>
+                <li class="item-menu">
+                    <a href="feedback-instructor.html">
                         <span class="icon">
                             <img id="foguete" src="/assets/images/foguetereal.png" alt="">
                         </span>
@@ -36,48 +46,22 @@
                         </span>
                     </a>
                 </li>
-                
+        
             </ul>
         </nav>
     </div>
-    <div class="container">
-        <div id="profile">
-            <h1>Perfil</h1>
-        </div>
+    <div class="main">
+        <h1>Perfil</h1>
+      <div class="select">
+        <span>Mentor</span>
+        <select name="mentor" id="mentor">
+          <option selected disabled>Escolha um mentor</option>
+        </select>
+      </div>
+      <div class="container">
         
-        <div id="info">
-            <div id="nome-box">
-                <p id="titulo">Nome</p>
-                <p id="name" class="valor"></p>
-            </div>
-            <div id="email-box">
-                <p id="titulo">Email</p>
-                <p id="email" class="valor"></p>
-            </div>
-            <div id="mentor-box">
-                <p id="training">Recebeu treinamento ?</p>
-                <p id="training" class="valor"></p>
-            </div>
-        </div>
-        <div id="info-ultimo">
-            <div id="inicioMentoria">
-                <p id="titulo">Inicio da mentoria</p>
-                <p id="startMentoring" class="valor"></p>
-            </div>
-            <div id="terminoMentoria">
-                <p id="titulo">Término da mentoria</p>
-                <p id="endMentoring" class="valor"></p>
-            </div>
-        </div>
-        <div id="info-primeiro">
-            <div id="bio">
-                <p id="titulo">Bio</p>
-                <p id="bio" class="valor"></p>
-            </div>
-        </div>
-        
+      </div>
     </div>
-  
     <script src="scripts/mentor-preview-script.js"></script>
-</body>
+  </body>
 </html>
