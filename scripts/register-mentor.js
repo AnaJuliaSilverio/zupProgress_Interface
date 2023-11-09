@@ -1,4 +1,4 @@
-const mentorURL = "http://localhost:8080/mentor";
+const mentorURL = `${baseUrl}/mentor`;
 var token = localStorage.getItem('jwtToken');
 function cadastrarMentor(formData) {
   fetch(mentorURL, {

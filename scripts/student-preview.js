@@ -2,7 +2,7 @@ var container = document.getElementById("container")
 var token = localStorage.getItem('jwtToken');
 
 function getAllStudents(projectName) {
-    return fetch(`http://localhost:8080/projects/get-students/${projectName}`, {
+    return fetch(`${baseUrl}/projects/get-students/${projectName}`, {
       headers: {
           'Accept': 'application/json',
           'Authorization': 'Bearer ' + token

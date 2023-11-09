@@ -56,7 +56,8 @@ function preencherFeedbackAtributes() {
       
 }
 function fetchPostEmail(formData) {
-    fetch("http://localhost:8080/email/send", {
+  
+    fetch(`${baseUrl}/email/send`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -133,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
 });
 function fetchPost(formData,selectedName,selectedDesafio){
-    fetch(`http://localhost:8080/feedback/${selectedDesafio}/${selectedName}`, {
+    fetch(`${baseUrl}/feedback/${selectedDesafio}/${selectedName}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

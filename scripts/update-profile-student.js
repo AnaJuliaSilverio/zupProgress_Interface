@@ -2,12 +2,12 @@
 var token = localStorage.getItem('jwtToken');
 const urlParams = new URLSearchParams(window.location.search);
 const emailUrl = urlParams.get("email");
-const studentUrl = `http://localhost:8080/students/${emailUrl}`;
+const studentUrl = `${baseUrl}/students/${emailUrl}`;
 const imageElement = document.getElementById("image-profile");
 const form = document.querySelector('form');
 document.addEventListener('DOMContentLoaded', function () {
   verificaCredenciaisAdm()
-    fetch(`http://localhost:8080/students/${emailUrl}`, {
+    fetch(`${baseUrl}/students/${emailUrl}`, {
       headers: {
           'Authorization': 'Bearer ' + token
       }
@@ -35,12 +35,13 @@ document.addEventListener('DOMContentLoaded', function () {
 form.addEventListener('submit',evento=>{
     evento.preventDefault();
     const formData = new FormData(form);
-    if(getNomeFile()){
+    
       formData.append('image',getNomeFile());
-    }
+    
     const data = Object.fromEntries(formData);
-    if(formData.image){
+    
       fetchImgPost(getFormDataImg())
-    }
+      console.log("oi")
+    
     fetchPost(data,studentUrl,"PUT")
 })

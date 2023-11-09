@@ -10,7 +10,7 @@ const deleteButton = document.getElementById('link-delete');
 function deleteStudent() {
     const confirmed = confirm("Tem certeza de que deseja deletar este estudante?");
     if (confirmed) {
-        fetch(`http://localhost:8080/students/${emailUrl}`, {
+        fetch(`${baseUrl}/students/${emailUrl}`, {
             method: 'DELETE',
             headers: {
                 'Authorization': 'Bearer ' + token

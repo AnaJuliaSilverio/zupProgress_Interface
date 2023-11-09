@@ -1,5 +1,5 @@
 var token = localStorage.getItem('jwtToken');
-const uploadUrl = "http://localhost:8080/file/uploadFile";
+const uploadUrl = `${baseUrl}/file/uploadFile`;
 const inputFile = document.querySelector("#picture__input");
 const pictureImage = document.querySelector(".picture__image");
 const pictureImageTxt = "Escolha uma imagem";
@@ -17,6 +17,7 @@ function fetchImgPost(formData){
         .then((response) => {
       if (!response.ok) {
         return response.json().then((error) => {
+          console.log("deuu")
           const imageElement = document.getElementById("image-profile");
           imageElement.src ="./assets/images/aluno-sem-foto.png"
         });
@@ -101,7 +102,7 @@ function fetchPost(formData,studentUrl,method){
 
 
 function getAllMentorName() {
-  return fetch('http://localhost:8080/mentor', {
+  return fetch(`${baseUrl}/mentor`, {
     headers: {
         'Accept': 'application/json',
         'Authorization': 'Bearer ' + token

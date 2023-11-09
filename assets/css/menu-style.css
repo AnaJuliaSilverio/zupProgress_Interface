@@ -57,6 +57,10 @@
   ul li.item-menu a .icon > img:hover {
     transform: scale(1.2);
   }
+  #mentor-icon{
+    margin-top: -0.7rem;
+   
+  }
   #exit{
     margin-top: -0.1rem;
     width: 40px;

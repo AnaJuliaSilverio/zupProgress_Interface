@@ -1,6 +1,6 @@
 var token = localStorage.getItem('jwtToken');
 function getAllProjectName() {
-    return fetch('http://localhost:8080/projects', {
+    return fetch(`${baseUrl}/projects`, {
       headers: {
           'Accept': 'application/json',
           'Authorization': 'Bearer ' + token
@@ -9,7 +9,7 @@ function getAllProjectName() {
     .then(response => response.json());
 }
 function getAllChallengeName() {
-  return fetch('http://localhost:8080/challenge', {
+  return fetch(`${baseUrl}/challenge`, {
     headers: {
         'Accept': 'application/json',
         'Authorization': 'Bearer ' + token
@@ -18,7 +18,7 @@ function getAllChallengeName() {
   .then(response => response.json());
 }
 function getStudentsName(projectName){
-    return fetch(`http://localhost:8080/projects/${projectName}`, {
+    return fetch(`${baseUrl}/projects/${projectName}`, {
         headers: {
             'Accept': 'application/json',
             'Authorization': 'Bearer ' + token
@@ -28,7 +28,7 @@ function getStudentsName(projectName){
 }
 
 function getAllAtributes() {
-    return fetch('http://localhost:8080/atributes', {
+    return fetch(`${baseUrl}/atributes`, {
       headers: {
           'Accept': 'application/json',
           'Authorization': 'Bearer ' + token
@@ -71,7 +71,7 @@ function populateProjectSelect() {
 
 function fetchImage(filename, imageElement) {
     
-    const downloadUrl = `http://localhost:8080/file/download/${filename}`;
+    const downloadUrl = `${baseUrl}/file/download/${filename}`;
 
     return fetch(downloadUrl, {
         headers: {
@@ -92,7 +92,7 @@ function fetchImage(filename, imageElement) {
 
 function updateStudentInfo() {
    
-    fetch(`http://localhost:8080/students/${emailUrl}`, {
+    fetch(`${baseUrl}/students/${emailUrl}`, {
         headers: {
             'Authorization': 'Bearer ' + token
         }

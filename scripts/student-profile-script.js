@@ -4,7 +4,7 @@ var email = localStorage.getItem('email')
 
 
 function updateStudentInfo() {
-    fetch(`http://localhost:8080/students/${email}`,{
+    fetch(`${baseUrl}/students/${email}`,{
         headers: {
             'Authorization': 'Bearer ' + token
           },

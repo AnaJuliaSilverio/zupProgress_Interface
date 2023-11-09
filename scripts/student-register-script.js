@@ -1,5 +1,5 @@
-const studentUrl = "http://localhost:8080/students";
-const registerUrl = "http://localhost:8080/auth/register"
+const studentUrl = `${baseUrl}/students`;
+const registerUrl = `${baseUrl}/auth/register`
 
 img.src ="./assets/images/aluno-sem-foto.png"
 var senha
@@ -9,7 +9,7 @@ const pcdSelect = document.getElementById("pcd");
 const typeOfDisabilityInput = document.getElementById("disability");
 const form = document.querySelector('form');
 function fetchPostEmail(formData) {
-  fetch("http://localhost:8080/email/send", {
+  fetch(`${baseUrl}/email/send`, {
       method: "POST",
       headers: {
           "Content-Type": "application/json",
@@ -54,13 +54,13 @@ form.addEventListener('submit',evento=>{
   formDataEmail = sendEmailPassword(senha)
    
     const formData = new FormData(form);
-    if(getNomeFile()){
+   
       formData.append('image',getNomeFile());
-    }
+   
     const data = Object.fromEntries(formData);
-    if(formData.image){
+    
       fetchImgPost(getFormDataImg())
-    }
+    
     fetchPost(data,studentUrl,"POST")
     fetchPostRegister(data.email)
     fetchPostEmail(formDataEmail)

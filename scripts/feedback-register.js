@@ -1,4 +1,5 @@
-const atributesURL = "http://localhost:8080/atributes";
+const atributesURL = `${baseUrl}/atributes`
+
 var token = localStorage.getItem('jwtToken');
 
 function cadastrarAtributo(formData) {
@@ -41,7 +42,7 @@ form.addEventListener("submit", (event) => {
 });
 
 function getAllAtributesselect() {
-    return fetch('http://localhost:8080/atributes', {
+    return fetch(`${baseUrl}/atributes`, {
         method: 'GET',
         headers: {
             'Accept': 'application/json',

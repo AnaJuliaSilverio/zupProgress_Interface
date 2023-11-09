@@ -16,7 +16,7 @@ if(role=="admin"){
         userMenu.style.display = 'block'; 
 }
 function getAllFeedback(selectedValueDesafio,selectedValueAvaliacao) {
-    return fetch(`http://localhost:8080/feedback/${selectedValueDesafio}/${selectedValueAvaliacao}/${email}`, {
+    return fetch(`${baseUrl}/feedback/${selectedValueDesafio}/${selectedValueAvaliacao}/${email}`, {
       headers: {
           'Accept': 'application/json',
           'Authorization': 'Bearer ' + token
@@ -25,7 +25,7 @@ function getAllFeedback(selectedValueDesafio,selectedValueAvaliacao) {
     .then(response => response.json());
   }
   function getConclusion(selectedValueDesafio) {
-    return fetch(`http://localhost:8080/feedback/conclusion/${selectedValueDesafio}/${email}`, {
+    return fetch(`${baseUrl}/feedback/conclusion/${selectedValueDesafio}/${email}`, {
       headers: {
           'Accept': 'application/json',
           'Authorization': 'Bearer ' + token
@@ -197,11 +197,11 @@ function preencherFeedback() {
 }
 
 function getStatusWidth(status) {
-    if (status === "acima-esperado") {
+    if (status === "Acima do esperado") {
         return "100%";
-    } else if (status === "dentro-esperado") {
+    } else if (status === "Dentro do esperado") {
         return "66.66%";
-    } else if (status === "abaixo-esperado") {
+    } else if (status === "Abaixo do esperado") {
         return "33.33%";
     }
 }

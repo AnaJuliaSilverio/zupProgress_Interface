@@ -1,4 +1,4 @@
-const projectUrl = "http://localhost:8080/projects";
+const projectUrl = `${baseUrl}/projects`;
 var token = localStorage.getItem('jwtToken');
 const leadershipDataMap = new Map();
 const instructorDataMap = new Map();
@@ -66,7 +66,7 @@ form.addEventListener("submit", (event) => {
 });
 
 function getAllLiderselect() {
-  return fetch('http://localhost:8080/leadership', {
+  return fetch(`${baseUrl}/leadership`, {
     headers: {
         'Accept': 'application/json',
         'Authorization': 'Bearer ' + token 
@@ -122,7 +122,7 @@ function updateEmail() {
   emailInput.value = selectedEmail;
 }
 function getAllInstrutorselect() {
-  return fetch('http://localhost:8080/instructor', {
+  return fetch(`${baseUrl}/instructor`, {
     headers: {
         'Accept': 'application/json',
         'Authorization': 'Bearer ' + token 

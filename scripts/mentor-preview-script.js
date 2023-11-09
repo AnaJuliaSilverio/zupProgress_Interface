@@ -1,6 +1,6 @@
 var token = localStorage.getItem("jwtToken");
 function getMentorData(name) {
-  return fetch(`http://localhost:8080/mentor/${name}`, {
+  return fetch(`${baseUrl}/mentor/${name}`, {
     headers: {
       Accept: "application/json",
       Authorization: "Bearer " + token,
@@ -11,7 +11,7 @@ function getMentorData(name) {
 
 
 function getAllMentorName() {
-  return fetch('http://localhost:8080/mentor', {
+  return fetch(`${baseUrl}/mentor`, {
     headers: {
         'Accept': 'application/json',
         'Authorization': 'Bearer ' + token
@@ -94,7 +94,8 @@ function showInfos(name) {
     mentorBoxDiv.id = "mentor-box";
 
     const mentorTitulo = document.createElement("p");
-    mentorTitulo.id = "training";
+    mentorTitulo.id = "titulo";
+  
     mentorTitulo.textContent = "Recebeu treinamento ?";
 
     const mentorValor = document.createElement("p");
@@ -116,7 +117,10 @@ function showInfos(name) {
     inicioMentoriaValor.id = "startMentoring";
     inicioMentoriaValor.classList.add("valor");
     // Defina a data de início da mentoria aqui
-    inicioMentoriaValor.textContent = atributo.startMentoring; // Substitua "atributo.startDate" pelo valor apropriado
+    const dateStart = new Date(atributo.startMentoring);
+    inicioMentoriaValor.textContent = dateStart.toLocaleDateString('pt-BR', {
+      timeZone: 'UTC',
+    }); // Substitua "atributo.startDate" pelo valor apropriado
 
     inicioMentoriaDiv.appendChild(inicioMentoriaTitulo);
     inicioMentoriaDiv.appendChild(inicioMentoriaValor);
@@ -133,8 +137,10 @@ function showInfos(name) {
     const terminoMentoriaValor = document.createElement("p");
     terminoMentoriaValor.id = "endMentoring";
     terminoMentoriaValor.classList.add("valor");
-    // Defina a data de término da mentoria aqui
-    terminoMentoriaValor.textContent = atributo.endMentoring;
+    const dateEnd = new Date(atributo.endMentoring);
+    terminoMentoriaValor.textContent = dateEnd.toLocaleDateString('pt-BR', {
+      timeZone: 'UTC',
+    });
     // Bio
     const infoPrimeiro = document.createElement("div");
     infoPrimeiro.id = "info-primeiro";

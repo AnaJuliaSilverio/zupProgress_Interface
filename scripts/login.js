@@ -1,7 +1,7 @@
 var token;
 var role;
 var email;
-const studentUrl = "http://localhost:8080/auth/login";
+const studentUrl = `${baseUrl}/auth/login`;
 const errologin= document.getElementById("erro-login")
 function fetchPost(formData) {
     fetch(studentUrl, {
