@@ -1,0 +1,178 @@
+
+.main{
+    flex: 1;
+    margin-left: 3rem;
+  
+
+}
+.main h1{
+  text-align:center;
+  padding: 1.5rem;
+  color: #555;
+  margin-left: 0.5rem;
+ 
+}
+
+  
+#form-inner {
+    
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+ 
+#container {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+}
+
+
+input{
+    margin-right: .7rem;
+    width:300px ;
+}
+#register-form input {
+    padding: 0.8rem 0.6rem;
+    border: none;
+    border-radius: 5px;
+    border: 2px solid #0089397d;
+
+}
+#biografia{
+    width: 100%;
+}
+
+#register-form input[type="submit"] {
+    background: #FF7008;
+    color: #fff;
+    border: 2px solid #fff;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.4s;
+    justify-content: center;
+  }
+  
+#register-form input[type="submit"]:hover {
+    background-color: #ff9041;
+  }
+#container label {
+    text-align: initial;
+    display: block;
+    margin-bottom: .5rem;
+    color: #001D3D;
+}
+
+#picture__input {
+    display: none;
+}
+
+.picture {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: #ededed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0089397d;
+    border: 2px dashed currentcolor;
+    cursor: pointer;
+    transition: color 300ms ease-in-out, background 300ms ease-in-out;
+    outline: none;
+    overflow: hidden;
+  }
+
+
+.checkbox {
+  cursor: pointer;
+  appearance: none;
+  width: 30px;
+  height: 30px;
+  border: 3px solid turquoise;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  
+}
+
+.form-group label{
+  margin: 0;
+  display: flex;
+  align-items: center;
+  position: relative;
+  vertical-align: middle;
+  margin-left: 0;
+ 
+}
+.form-group{
+  display: flex;
+ align-items: center;
+ margin-top: 15px;
+ 
+}
+
+.checkbox:before {
+    content: '';
+    width: 15px;
+    height: 15px;
+    background: turquoise;
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 600ms ease-in-out;
+    position: absolute;
+}
+
+#checkbox1, #checkbox2{
+  position: relative;
+}
+.checkbox:before {
+    border-radius: 0;
+    background: transparent;
+    border: 4px solid turquoise;
+    border-left: 0;
+    border-top: 0;
+    width: 7px;
+    height: 12px;
+    transform: rotate(45deg);
+    top: 2px;
+}
+
+.radio:checked:before, .checkbox:checked:before {
+    opacity: 1;
+}
+
+
+#biografia #bio {
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    border: 2px solid #0089397d;
+    border-radius: 5px;
+}
+
+.select span {
+  margin-bottom: 1rem;
+    margin-top: 2rem;
+    text-align: initial;
+    display: block;
+    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
+    color: #001D3D;
+}
+
+
+
+
+
+
+
+

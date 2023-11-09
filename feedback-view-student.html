@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zup Progress</title>
+    <link rel="icon" href="/assets/images/favicon (2).ico" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/feedback-view-student.css">
+    <link rel="stylesheet" href="/assets/css/menu-style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;500;600&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="menu" id="user-menu">
+        <nav class="menu-lateral">
+            <ul>
+                <li class="item-menu">
+                    <a href="student-profile.html">
+                        <span class="icon">
+                            <img id="person-icon" src="/assets/images/Person.png" alt="">
+                         </span>
+                    </a>
+                </li>
+                <li class="item-menu">
+                    <a href="feedback-view-student.html">
+                        <span class="icon">
+                            <img id="foguete" src="/assets/images/foguetereal.png" alt="">
+                        </span>
+                    </a>
+                </li>
+                <li class="item-menu">
+                    <a href="login.html" id="exit-icon">
+                        <span class="icon">
+                            <img id="exit" src="/assets/images/exit-icon.png" alt="">
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="menu" id="admin-menu">
+        <nav class="menu-lateral">
+            <ul>
+                <li class="item-menu">
+                    <a href="index-instructor.html">
+                            <span class="icon">
+                                <img src="/assets/images/Vector.png" alt="">
+                        </span>
+                    </a>
+                </li>
+                <li class="item-menu">
+                    <a href="student-preview.html">
+                        <span class="icon">
+                            <img src="/assets/images/education (1) 1.png" alt="">
+                        </span>
+                    </a>
+                </li>
+                <li class="item-menu">
+                    <a href="feedback-instructor.html">
+                        <span class="icon">
+                            <img id="foguete" src="/assets/images/foguetereal.png" alt="">
+                        </span>
+                    </a>
+                </li>
+                <li class="item-menu">
+                    <a href="mentor-preview.html">
+                        <span class="icon">
+                            <img id="mentor-icon" src="/assets/images/mentor-icon.png" alt="">
+                        </span>
+                    </a>
+                </li>
+                <li class="item-menu">
+                    <a href="login.html" id="exit-icon">
+                        <span class="icon">
+                            <img id="exit" src="/assets/images/exit-icon.png" alt="">
+                        </span>
+                    </a>
+                </li>
+        
+            </ul>
+        </nav>
+    </div>
+   <div class="main">
+    <h1>Feedback</h1>
+    <div class="dropdown">
+        <div class="select">
+            <span>Desafio</span>
+            <select name="desafio" id="desafio">
+               <option selected disabled>Escolha um desafio</option>
+            </select>
+         </div>
+         <div class="select">
+            <span>Avaliação</span>
+            <select name="avaliacao" id="avaliacao">
+               <option selected disabled>Escolha o tipo de avaliação</option>
+               <option value="avaliacao-mentor">Avaliação do Mentor</option>
+               <option value="avaliacao-instrutor">Avaliação do Instrutor</option>
+               <option value="auto-avaliacao">Auto Avaliação</option>
+               <option value="conclusao">Conclusão</option>
+            </select>
+         </div>
+    </div>
+    <div class="container">
+
+      
+
+    </div>
+    <div id="nenhum-feedback"><p>
+        Nenhuma avaliação disponível 😕
+    </p></div>
+   </div>
+   <script src="scripts/env.js"></script>
+   <script src="scripts/fetch-script.js"></script>
+   <script src="scripts/routes.js"></script>
+   <script src="scripts/feedback-view-student.js"></script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+var baseUrl = "http://ec2-3-84-93-90.compute-1.amazonaws.com:8080"

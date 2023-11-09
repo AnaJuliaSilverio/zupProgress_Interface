@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zup Progress</title>
+    <link rel="icon" href="/assets/images/favicon (2).ico" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/student-profile-style.css">
+    <link rel="stylesheet" href="/assets/css/menu-style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="menu" >
+        <nav class="menu-lateral">
+            <ul>
+                <li class="item-menu">
+                    <a href="student-profile.html">
+                        <span class="icon">
+                            <img id="person-icon" src="/assets/images/Person.png" alt="">
+                         </span>
+                    </a>
+                </li>
+                <li class="item-menu">
+                    <a href="feedback-view-student.html">
+                        <span class="icon">
+                            <img id="foguete" src="/assets/images/foguetereal.png" alt="">
+                        </span>
+                    </a>
+                </li>
+                <li class="item-menu">
+                    <a href="login.html" id="exit-icon">
+                        <span class="icon">
+                            <img id="exit" src="/assets/images/exit-icon.png" alt="">
+                        </span>
+                    </a>
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+    <div class="container">
+        <div id="profile">
+            <h1>Perfil</h1>
+            <img src="" id="image-profile" alt="Imagem de Perfil">
+        </div>
+        
+        <div id="info">
+            <div id="nome-box">
+                <p id="titulo">Nome</p>
+                <p id="name" class="valor"></p>
+            </div>
+            <div id="email-box">
+                <p id="titulo">Email</p>
+                <p id="email" class="valor"></p>
+            </div>
+            <div id="mentor-box">
+                <p id="titulo">Mentor</p>
+                <p id="mentor" class="valor"></p>
+            </div>
+        </div>
+        <div id="info-primeiro">
+            <div id="cidade">
+                <p id="titulo">Cidade</p>
+                <p id="city" class="valor"></p>
+            </div>
+            <div id="titulo">
+                <p id="titulo">Idade</p>
+                <p id="age" class="valor"></p>
+            </div>
+        </div>
+        <div id="info-ultimo">
+            <div id="terminoContrato">
+                <p id="titulo">Término do Contrato</p>
+                <p id="contract_end" class="valor"></p>
+            </div>
+            <div id="titulo">
+                <p id="titulo">Projeto</p>
+                <p id="project" class="valor"></p>
+            </div>
+        </div>
+        
+        
+    </div>
+    <script src="scripts/env.js"></script>
+    <script src="scripts/fetch-script.js"></script>
+    <script src="scripts/routes.js"></script>
+    <script src="scripts/student-profile-script.js"></script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+.main {
+  flex: 1;
+  margin-left: 3rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.main h1 {
+  text-align: center;
+  padding: 1.5rem;
+  color: #555;
+  margin-left: 0.5rem;
+}
+
+#containerAtributes {
+  display: flex;
+  flex-direction: column; 
+  margin-left: 8rem;
+  margin-top: 3rem;
+}
+#aviso{
+  color: rgb(0, 137, 57);
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 1rem;
+  margin-left: 3rem;
+}
+.select {
+  margin-bottom: 1rem; 
+  
+}
+
+input[type="submit"] {
+  margin-top: 1rem; 
+}
+
+#container #container-item {
+  display: flex;
+  margin-left: 1rem;
+  margin-right: 2rem;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  width: 400px;
+  border: 1px solid rgba(0, 137, 57, 0.49);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.08);
+  background-color: hsl(0, 0%, 100%);
+  border-radius: 10px;
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+
+
+select {
+  border: 2px solid #0089397d;
+  border-radius: 5px;
+  width: 300px;
+  padding: 0.63rem 0.4rem;
+  cursor: pointer;
+  font-size: 1em;
+  border-radius: 0.25em;
+  margin-right: 0.7rem;
+}
+
+span {
+  text-align: initial;
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #001d3d;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+.teste label {
+  display: block;
+  color: #001d3d;
+  width: 100px;
+}
+
+.teste input {
+  border: 2px solid #0089397d;
+  border-radius: 5px;
+  width: 300px;
+  padding: 0.63rem 0.4rem;
+  cursor: pointer;
+  font-size: 1em;
+  border-radius: 0.25em;
+  margin-right: 0.7rem;
+}
+.my-span {
+  font-size: 22px;
+}
+
+#teste span {
+  text-align: initial;
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #001d3d;
+}
+#containerAtributes input[type="submit"] {
+  background: #FF7008;
+  color: #fff;
+  border: 2px solid #fff;
+  font-size: 1.1rem;
+  width: 300px; /* Defina a largura desejada */
+
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.4s;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  margin-top: 1rem;
+}
+
+#containerProject input[type="submit"]:hover {
+  background-color: #ff9041;
+}
